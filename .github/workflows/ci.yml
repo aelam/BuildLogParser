@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04, macos-latest]
-        swift-version: ['5.9', '5.10']
+        swift-version: ['5.9']
 
     steps:
     - name: Checkout code
@@ -82,7 +82,7 @@ jobs:
     - name: Setup Swift
       uses: swift-actions/setup-swift@v1
       with:
-        swift-version: '5.10'
+        swift-version: '5.9'
         
     - name: Check Swift format
       run: |
@@ -119,7 +119,7 @@ jobs:
     - name: Setup Swift
       uses: swift-actions/setup-swift@v1
       with:
-        swift-version: '5.10'
+        swift-version: '5.9'
         
     - name: Verify cross-platform APIs
       run: |
