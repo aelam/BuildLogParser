@@ -14,14 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-22.04, macos-latest]
         swift-version: ['5.9', '5.10']
-        include:
-          # Add specific configurations if needed
-          - os: ubuntu-latest
-            swift-container: swift:5.9-jammy
-          - os: ubuntu-latest  
-            swift-container: swift:5.10-jammy
 
     steps:
     - name: Checkout code
@@ -79,7 +73,7 @@ jobs:
   # Lint and format checking
   lint:
     name: Code Quality
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     
     steps:
     - name: Checkout code
@@ -116,7 +110,7 @@ jobs:
     
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-22.04, macos-latest]
         
     steps:
     - name: Checkout code
