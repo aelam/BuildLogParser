@@ -304,23 +304,43 @@ public class DiagnosticsParser {
     }
 
     private func consumeLine(_ line: String) {
-        // 起始规则
-        for rule in rules {
-            if let diag = rule.matchStart(line: line) {
-                flush()
-                current = diag
-                return
+        // 检查是否是结束条件
+        for rule in rules where rule.isEnd(line: line, current: current) {
+            flush()
+            // 检查这一行是否同时是新诊断的开始
+            for startRule in rules {
+                if let diag = startRule.matchStart(line: line) {
+                    current = diag
+                    return
+                }
             }
+            return
         }
 
+        // 检查是否是继续行
         for rule in rules where rule.matchContinuation(line: line, current: current) {
             current?.relatedMessages.append(line)
             return
         }
 
-        for rule in rules where rule.isEnd(line: line, current: current) {
-            flush()
-            return
+        // 检查是否是新诊断的开始
+        for rule in rules {
+            if let diag = rule.matchStart(line: line) {
+                flush() // 先保存当前的诊断
+                current = diag
+                return
+            }
+        }
+
+        // 如果都不匹配，且当前有诊断，可能需要结束当前诊断
+        if current != nil {
+            // 检查是否所有规则都认为应该结束
+            let shouldEnd = rules.allSatisfy { rule in
+                rule.isEnd(line: line, current: current)
+            }
+            if shouldEnd {
+                flush()
+            }
         }
     }
 

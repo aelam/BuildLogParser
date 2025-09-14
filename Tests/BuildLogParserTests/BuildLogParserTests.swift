@@ -6,14 +6,13 @@ struct BuildLogParserTests {
     @Test
     func batchProcessing() async throws {
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
+            CompileErrorRule(),
             LinkerErrorRule(),
             XCTestRule(),
         ]
 
         let parser = DiagnosticsParser(rules: rules)
 
-        // 模拟日志行
         let logLines = [
             "main.swift:10:5: error: use of unresolved identifier 'foo'",
             "Undefined symbols for architecture x86_64:",
@@ -34,7 +33,7 @@ struct BuildLogParserTests {
     @Test
     func streamProcessing() async throws {
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
+            CompileErrorRule(),
             LinkerErrorRule(),
             XCTestRule()
         ]
@@ -85,7 +84,7 @@ struct BuildLogParserTests {
     @Test
     func filteredStreamProcessing() async throws {
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
+            CompileErrorRule(),
             LinkerErrorRule(),
             XCTestRule()
         ]
@@ -137,7 +136,7 @@ struct BuildLogParserTests {
     @Test
     func multipleInputTypes() async throws {
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
+            CompileErrorRule(),
             LinkerErrorRule(),
             XCTestRule()
         ]
@@ -186,7 +185,7 @@ struct BuildLogParserTests {
     @Test
     func asyncInputProcessing() async throws {
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
+            CompileErrorRule(),
             LinkerErrorRule(),
             XCTestRule(),
         ]

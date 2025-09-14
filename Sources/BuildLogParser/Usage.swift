@@ -7,15 +7,11 @@
 
 import Foundation
 
-// MARK: - 使用示例
-
 public class BuildLogParserUsage {
-    // 示例1：使用不同的输入源
     public static func demonstrateInputs() {
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
-            LinkerErrorRule(),
-            XCTestRule()
+            CompileErrorRule(),
+            XcodeBuildRule()
         ]
 
         let parser = DiagnosticsParser(rules: rules)
@@ -43,9 +39,8 @@ public class BuildLogParserUsage {
     // 示例2：使用不同的输出源
     public static func demonstrateOutputs() {
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
-            LinkerErrorRule(),
-            XCTestRule(),
+            CompileErrorRule(),
+            XcodeBuildRule(),
         ]
 
         let parser = DiagnosticsParser(rules: rules)
@@ -81,9 +76,8 @@ public class BuildLogParserUsage {
     // 示例3：处理多种类型的输入源
     public static func demonstrateMultipleInputs() {
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
-            LinkerErrorRule(),
-            XCTestRule(),
+            CompileErrorRule(),
+            XcodeBuildRule(),
         ]
 
         let parser = DiagnosticsParser(rules: rules)
@@ -144,9 +138,8 @@ public class BuildLogParserUsage {
         }
 
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
-            LinkerErrorRule(),
-            XCTestRule(),
+            CompileErrorRule(),
+            XcodeBuildRule(),
         ]
 
         let parser = DiagnosticsParser(rules: rules)
@@ -171,9 +164,8 @@ public class BuildLogParserUsage {
     @available(macOS 10.15, iOS 13.0, *)
     public static func demonstrateAsyncStreaming() async {
         let rules: [DiagnosticRule] = [
-            SwiftErrorRule(),
-            LinkerErrorRule(),
-            XCTestRule(),
+            CompileErrorRule(),
+            XcodeBuildRule(),
         ]
 
         let parser = DiagnosticsParser(rules: rules)
