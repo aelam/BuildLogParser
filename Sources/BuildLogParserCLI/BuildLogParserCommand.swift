@@ -8,8 +8,11 @@ struct BuildLogParserCommand: AsyncParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "buildlog-parser",
         abstract: "Parse Xcode build logs and extract diagnostics",
-        version: "1.0.0",
-        subcommands: [ParseCommand.self, ValidateCommand.self],
+        version: "0.1.0",
+        subcommands: [
+            ParseCommand.self,
+            ValidateCommand.self
+        ],
         defaultSubcommand: ParseCommand.self
     )
 }
@@ -39,6 +42,9 @@ struct ParseCommand: AsyncParsableCommand {
     @Flag(help: "Show statistics summary")
     var showStats: Bool = false
 
+    @Flag(help: "Enable streaming output (output diagnostics as they are found)")
+    var stream: Bool = false
+
     func run() async throws {
         // Create input source
         let input: DiagnosticInput
@@ -61,11 +67,19 @@ struct ParseCommand: AsyncParsableCommand {
                 errorsOnly: errorsOnly
             )
         case .json:
-            JSONOutput(
-                outputPath: output,
-                verbose: verbose,
-                errorsOnly: errorsOnly
-            )
+            if stream {
+                StreamingJSONOutput(
+                    outputPath: output,
+                    verbose: verbose,
+                    errorsOnly: errorsOnly
+                )
+            } else {
+                JSONOutput(
+                    outputPath: output,
+                    verbose: verbose,
+                    errorsOnly: errorsOnly
+                )
+            }
         case .summary:
             SummaryOutput(
                 outputPath: output,
@@ -76,7 +90,16 @@ struct ParseCommand: AsyncParsableCommand {
 
         // Create parser with all available rules
         let rules: [DiagnosticRule] = [
+            // Primary compile error rule (handles most compilation errors)
+            CompileErrorRule(source: "xcodebuild", categoryPrefix: "xcode"),
+            // Additional Xcode build rules
+            SwiftCompileTaskFailedRule(),
+            XcodeBuildWarningRule(),
+            BuildCommandFailedRule(),
+            // Swift build rules
             SwiftBuildCompileErrorRule(),
+            SwiftBuildModuleFailedRule(),
+            // General rules
             LinkerErrorRule(),
             XCTestRule()
         ]

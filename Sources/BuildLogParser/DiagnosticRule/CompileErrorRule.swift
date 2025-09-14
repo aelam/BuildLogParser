@@ -82,10 +82,48 @@ public struct CompileErrorRule: DiagnosticRule {
 
     public func matchContinuation(line: String, current: Diagnostic?) -> Bool {
         guard current != nil else { return false }
-        return line.hasPrefix("note:") || line.trimmingCharacters(in: .whitespaces).hasPrefix("^")
+        let trimmed = line.trimmingCharacters(in: .whitespaces)
+
+        // Accept continuation lines:
+        // - note: messages
+        // - lines with caret indicators (^)
+        // - source code lines (anything that's not a new diagnostic or build command)
+        if trimmed.hasPrefix("note:") || trimmed.hasPrefix("^") {
+            return true
+        }
+
+        // Don't accept build commands or new compilation units as continuation
+        if trimmed.hasPrefix("SwiftCompile") ||
+            trimmed.hasPrefix("cd ") ||
+            trimmed.hasPrefix("** BUILD") ||
+            trimmed.hasPrefix("---")
+        {
+            return false
+        }
+
+        // Don't accept lines that look like new diagnostics
+        if fastFail(line: line) {
+            return false
+        }
+
+        // Accept other lines as potential source code context
+        return !trimmed.isEmpty
     }
 
     public func isEnd(line: String, current: Diagnostic?) -> Bool {
-        line.trimmingCharacters(in: .whitespaces).isEmpty
+        guard current != nil else { return true }
+        let trimmed = line.trimmingCharacters(in: .whitespaces)
+
+        // End diagnostic when we encounter:
+        // - Empty line (traditional separator)
+        // - New compilation unit (SwiftCompile, etc.)
+        // - Build commands (cd, etc.)
+        // - Build status messages
+        return trimmed.isEmpty ||
+            trimmed.hasPrefix("SwiftCompile") ||
+            trimmed.hasPrefix("cd ") ||
+            trimmed.hasPrefix("** BUILD") ||
+            trimmed.hasPrefix("---")
+        // Removed fastFail check - let the parser handle new diagnostics
     }
 }

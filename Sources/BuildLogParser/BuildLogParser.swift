@@ -103,7 +103,8 @@ public struct FileHandleInput: DiagnosticInput {
             while let newlineRange = buffer.range(of: Data([0x0A])) { // \n
                 let lineData = buffer.subdata(in: 0 ..< newlineRange.lowerBound)
                 if let lineString = String(data: lineData, encoding: .utf8) {
-                    lines.append(lineString.trimmingCharacters(in: .whitespacesAndNewlines))
+                    // Only trim newlines, preserve spaces for proper alignment
+                    lines.append(lineString.trimmingCharacters(in: .newlines))
                 }
                 buffer.removeSubrange(0 ..< newlineRange.upperBound)
             }
@@ -111,7 +112,8 @@ public struct FileHandleInput: DiagnosticInput {
 
         // Process last line
         if !buffer.isEmpty, let lastLine = String(data: buffer, encoding: .utf8) {
-            lines.append(lastLine.trimmingCharacters(in: .whitespacesAndNewlines))
+            // Only trim newlines, preserve spaces for proper alignment
+            lines.append(lastLine.trimmingCharacters(in: .newlines))
         }
 
         return AnySequence(lines)

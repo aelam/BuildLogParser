@@ -52,7 +52,14 @@ class TextOutput: DiagnosticOutput {
 
         if verbose, !diagnostic.relatedMessages.isEmpty {
             for relatedMessage in diagnostic.relatedMessages {
-                output += "    📎 \(relatedMessage)\n"
+                let trimmed = relatedMessage.trimmingCharacters(in: .whitespaces)
+                if trimmed.hasPrefix("^") {
+                    // For caret indicators, preserve the original spacing
+                    output += "    📎\(relatedMessage)\n"
+                } else {
+                    // For other messages, add standard spacing
+                    output += "    📎 \(relatedMessage)\n"
+                }
             }
         }
 
@@ -128,6 +135,115 @@ class JSONOutput: DiagnosticOutput {
             if let data = errorMessage.data(using: .utf8) {
                 FileHandle.standardError.write(data)
             }
+        }
+
+        if outputPath != "-" {
+            fileHandle?.closeFile()
+        }
+    }
+}
+
+// MARK: - Streaming JSON Output
+
+class StreamingJSONOutput: DiagnosticOutput {
+    private let outputPath: String
+    private let verbose: Bool
+    private let errorsOnly: Bool
+    private let fileHandle: FileHandle?
+    private var isFirstDiagnostic: Bool = true
+
+    init(outputPath: String, verbose: Bool, errorsOnly: Bool) {
+        self.outputPath = outputPath
+        self.verbose = verbose
+        self.errorsOnly = errorsOnly
+
+        if outputPath == "-" {
+            fileHandle = FileHandle.standardOutput
+        } else {
+            FileManager.default.createFile(atPath: outputPath, contents: nil)
+            fileHandle = FileHandle(forWritingAtPath: outputPath)
+        }
+
+        // Start JSON array
+        fileHandle?.write(Data("[\n".utf8))
+    }
+
+    func write(_ diagnostic: Diagnostic) {
+        if errorsOnly, diagnostic.severity != .error {
+            return
+        }
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        encoder.dateEncodingStrategy = .iso8601
+
+        do {
+            let diagnosticJSON = DiagnosticJSON(diagnostic)
+            let jsonData = try encoder.encode(diagnosticJSON)
+
+            // Add comma for all diagnostics except the first one
+            var output = ""
+            if !isFirstDiagnostic {
+                output += ",\n"
+            }
+            isFirstDiagnostic = false
+
+            // Add indentation to match array formatting
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                let indentedLines = jsonString.components(separatedBy: .newlines)
+                    .map { line in
+                        line.isEmpty ? line : "  " + line
+                    }
+                    .joined(separator: "\n")
+                output += indentedLines
+
+                fileHandle?.write(Data(output.utf8))
+            }
+
+        } catch {
+            let errorMessage = "Error encoding JSON: \(error.localizedDescription)\n"
+            if let data = errorMessage.data(using: .utf8) {
+                FileHandle.standardError.write(data)
+            }
+        }
+    }
+
+    func finish() {
+        // Close JSON array and add metadata
+        let metadata = DiagnosticMetadata(
+            totalCount: 0, // We don't track count in streaming mode
+            errorCount: 0,
+            warningCount: 0,
+            infoCount: 0,
+            noteCount: 0,
+            timestamp: Date(),
+            verbose: verbose
+        )
+
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+            encoder.dateEncodingStrategy = .iso8601
+
+            let metadataData = try encoder.encode(metadata)
+            if let metadataString = String(data: metadataData, encoding: .utf8) {
+                let indentedMetadata = metadataString.components(separatedBy: .newlines)
+                    .map { line in
+                        line.isEmpty ? line : "  " + line
+                    }
+                    .joined(separator: "\n")
+
+                var output = ""
+                if !isFirstDiagnostic {
+                    output += ",\n"
+                }
+                output += "  \"metadata\": \(indentedMetadata)\n]\n"
+
+                fileHandle?.write(Data(output.utf8))
+            }
+        } catch {
+            // Fallback: just close the array
+            fileHandle?.write(Data("\n]\n".utf8))
         }
 
         if outputPath != "-" {
