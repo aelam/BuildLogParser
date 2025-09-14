@@ -9,22 +9,20 @@ public struct XCTestRule: DiagnosticRule {
     public init() {}
 
     public func matchStart(line: String) -> Diagnostic? {
-        if line.hasPrefix("Test Case") {
-            let severity: Diagnostic.Severity = line.contains("failed") ? .error : .info
-            return Diagnostic(
-                file: nil,
-                line: nil,
-                column: nil,
-                severity: severity,
-                message: line,
-                relatedMessages: [],
-                source: "xctest",
-                category: line.contains("failed") ? "test_failure" : "test_info",
-                raw: line,
-                buildTarget: nil,
-            )
-        }
-        return nil
+        guard line.hasPrefix("Test Case") else { return nil }
+        let severity: Diagnostic.Severity = line.contains("failed") ? .error : .info
+        return Diagnostic(
+            file: nil,
+            line: nil,
+            column: nil,
+            severity: severity,
+            message: line,
+            relatedMessages: [],
+            source: "xctest",
+            category: line.contains("failed") ? "test_failure" : "test_info",
+            raw: line,
+            buildTarget: nil,
+        )
     }
 
     public func matchContinuation(line: String, current: Diagnostic?) -> Bool { false }

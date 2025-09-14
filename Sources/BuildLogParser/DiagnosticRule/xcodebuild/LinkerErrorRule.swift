@@ -9,21 +9,21 @@ public struct LinkerErrorRule: DiagnosticRule {
     public init() {}
 
     public func matchStart(line: String) -> Diagnostic? {
-        if line.hasPrefix("Undefined symbols for architecture") {
-            return Diagnostic(
-                file: nil,
-                line: nil,
-                column: nil,
-                severity: .error,
-                message: line,
-                relatedMessages: [],
-                source: "linker",
-                category: "undefined_symbols",
-                raw: line,
-                buildTarget: nil,
-            )
+        guard line.hasPrefix("Undefined symbols for architecture") else {
+            return nil
         }
-        return nil
+        return Diagnostic(
+            file: nil,
+            line: nil,
+            column: nil,
+            severity: .error,
+            message: line,
+            relatedMessages: [],
+            source: "linker",
+            category: "undefined_symbols",
+            raw: line,
+            buildTarget: nil,
+        )
     }
 
     public func matchContinuation(line: String, current: Diagnostic?) -> Bool {

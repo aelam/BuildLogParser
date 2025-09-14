@@ -17,21 +17,21 @@ public struct BuildFailedRule: DiagnosticRule {
     public init() {}
 
     public func matchStart(line: String) -> Diagnostic? {
-        if buildFailedRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)) != nil {
-            return Diagnostic(
-                file: nil,
-                line: nil,
-                column: nil,
-                severity: .error,
-                message: "BUILD FAILED",
-                relatedMessages: [],
-                source: "xcodebuild",
-                category: "build_failed",
-                raw: line,
-                buildTarget: nil
-            )
+        guard buildFailedRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)) != nil else {
+            return nil
         }
-        return nil
+        return Diagnostic(
+            file: nil,
+            line: nil,
+            column: nil,
+            severity: .error,
+            message: "BUILD FAILED",
+            relatedMessages: [],
+            source: "xcodebuild",
+            category: "build_failed",
+            raw: line,
+            buildTarget: nil
+        )
     }
 
     public func matchContinuation(line: String, current: Diagnostic?) -> Bool {

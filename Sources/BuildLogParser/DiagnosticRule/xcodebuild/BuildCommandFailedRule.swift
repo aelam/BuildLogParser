@@ -17,34 +17,33 @@ public struct BuildCommandFailedRule: DiagnosticRule {
     public init() {}
 
     public func matchStart(line: String) -> Diagnostic? {
-        if let match = buildCommandFailedRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)),
-           let commandRange = Range(match.range(at: 1), in: line),
-           let targetRange = Range(match.range(at: 2), in: line),
-           let projectRange = Range(match.range(at: 3), in: line)
-        {
-            let command = String(line[commandRange])
-            let target = String(line[targetRange])
-            let project = String(line[projectRange])
+        guard let match = buildCommandFailedRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)),
+              let commandRange = Range(match.range(at: 1), in: line),
+              let targetRange = Range(match.range(at: 2), in: line),
+              let projectRange = Range(match.range(at: 3), in: line)
+        else { return nil }
 
-            // 跳过已经被 SwiftCompile 规则匹配的行
-            if command.contains("SwiftCompile") {
-                return nil
-            }
+        let command = String(line[commandRange])
+        let target = String(line[targetRange])
+        let project = String(line[projectRange])
 
-            return Diagnostic(
-                file: nil,
-                line: nil,
-                column: nil,
-                severity: .error,
-                message: "Build command failed: \(command)",
-                relatedMessages: [],
-                source: "xcodebuild",
-                category: "build_command_failed",
-                raw: line,
-                buildTarget: "\(target) (\(project))"
-            )
+        // 跳过已经被 SwiftCompile 规则匹配的行
+        if command.contains("SwiftCompile") {
+            return nil
         }
-        return nil
+
+        return Diagnostic(
+            file: nil,
+            line: nil,
+            column: nil,
+            severity: .error,
+            message: "Build command failed: \(command)",
+            relatedMessages: [],
+            source: "xcodebuild",
+            category: "build_command_failed",
+            raw: line,
+            buildTarget: "\(target) (\(project))"
+        )
     }
 
     public func matchContinuation(line: String, current: Diagnostic?) -> Bool {

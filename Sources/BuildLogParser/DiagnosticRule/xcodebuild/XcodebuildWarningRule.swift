@@ -17,24 +17,26 @@ public struct XcodebuildWarningRule: DiagnosticRule {
     public init() {}
 
     public func matchStart(line: String) -> Diagnostic? {
-        if let match = warningRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)),
-           let messageRange = Range(match.range(at: 1), in: line)
-        {
-            let message = String(line[messageRange])
-            return Diagnostic(
-                file: nil,
-                line: nil,
-                column: nil,
-                severity: .warning,
-                message: message,
-                relatedMessages: [],
-                source: "xcodebuild",
-                category: "warning",
-                raw: line,
-                buildTarget: nil
-            )
+        guard
+            let match = warningRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)),
+            let messageRange = Range(match.range(at: 1), in: line)
+        else {
+            return nil
         }
-        return nil
+
+        let message = String(line[messageRange])
+        return Diagnostic(
+            file: nil,
+            line: nil,
+            column: nil,
+            severity: .warning,
+            message: message,
+            relatedMessages: [],
+            source: "xcodebuild",
+            category: "warning",
+            raw: line,
+            buildTarget: nil
+        )
     }
 
     public func matchContinuation(line: String, current: Diagnostic?) -> Bool {
