@@ -16,10 +16,10 @@ public class BuildLogParserUsage {
 
         let parser = DiagnosticsParser(rules: rules)
 
-        // 添加打印输出
+        // Add print output
         parser.addOutput(PrintOutput())
 
-        // 1. 字符串输入
+        // 1. String input
         let stringInput = StringInput("""
         main.swift:10:5: error: use of unresolved identifier 'foo'
         main.swift:15:3: warning: variable 'bar' was never used
@@ -30,13 +30,13 @@ public class BuildLogParserUsage {
             parser.addOutput(collectingOutput)
             try parser.parse(input: stringInput)
             let result1 = collectingOutput.getAllDiagnostics()
-            print("字符串输入解析结果: \(result1.count) 个诊断")
+            print("String input parsing result: \(result1.count) diagnostics")
         } catch {
-            print("解析错误: \(error)")
+            print("Parsing error: \(error)")
         }
     }
 
-    // 示例2：使用不同的输出源
+    // Example 2: Using different output sources
     public static func demonstrateOutputs() {
         let rules: [DiagnosticRule] = [
             CompileErrorRule(),
@@ -45,18 +45,18 @@ public class BuildLogParserUsage {
 
         let parser = DiagnosticsParser(rules: rules)
 
-        // 添加多个输出处理器
+        // Add multiple output processors
         parser.addOutput(PrintOutput())
 
-        // 添加回调输出（只处理错误）
+        // Add callback output (only process errors)
         let errorOnlyOutput = CallbackOutput(onDiagnostic: { diagnostic in
             if diagnostic.severity == .error {
-                print("🚨 发现严重错误: \(diagnostic.message)")
+                print("🚨 Critical error found: \(diagnostic.message)")
             }
         })
         parser.addOutput(errorOnlyOutput)
 
-        // 添加收集输出（用于后续分析）
+        // Add collecting output (for subsequent analysis)
         let collectingOutput = CollectingOutput()
         parser.addOutput(collectingOutput)
 
@@ -67,13 +67,13 @@ public class BuildLogParserUsage {
 
         do {
             _ = try parser.parse(input: input)
-            print("收集到的诊断: \(collectingOutput.getAllDiagnostics().count) 个")
+            print("Collected diagnostics: \(collectingOutput.getAllDiagnostics().count) items")
         } catch {
-            print("解析错误: \(error)")
+            print("Parsing error: \(error)")
         }
     }
 
-    // 示例3：处理多种类型的输入源
+    // Example 3: Processing multiple types of input sources
     public static func demonstrateMultipleInputs() {
         let rules: [DiagnosticRule] = [
             CompileErrorRule(),
@@ -82,7 +82,7 @@ public class BuildLogParserUsage {
 
         let parser = DiagnosticsParser(rules: rules)
 
-        // 合并多个输入源的内容
+        // Combine content from multiple input sources
         let combinedInput = StringInput("""
         main.swift:10:5: error: use of unresolved identifier 'foo'
         main.swift:15:3: warning: variable 'bar' was never used
@@ -96,15 +96,15 @@ public class BuildLogParserUsage {
             parser.addOutput(collectingOutput)
             try parser.parse(input: combinedInput)
             let result = collectingOutput.getAllDiagnostics()
-            print("多类型输入解析结果: \(result.count) 个诊断")
+            print("Multi-type input parsing result: \(result.count) diagnostics")
         } catch {
-            print("解析错误: \(error)")
+            print("Parsing error: \(error)")
         }
     }
 
-    // 示例4：自定义输入和输出
+    // Example 4: Custom input and output
     public static func demonstrateCustomInputOutput() {
-        // 自定义输入：从网络流读取
+        // Custom input: reading from network stream
         struct NetworkInput: DiagnosticInput {
             let url: URL
 
@@ -118,7 +118,7 @@ public class BuildLogParserUsage {
             }
         }
 
-        // 自定义输出：写入文件
+        // Custom output: writing to file
         class FileOutput: DiagnosticOutput {
             let url: URL
             private var content = ""
@@ -133,7 +133,7 @@ public class BuildLogParserUsage {
 
             func finish() {
                 try? content.write(to: url, atomically: true, encoding: .utf8)
-                print("诊断结果已写入: \(url.path)")
+                print("Diagnostic results written to: \(url.path)")
             }
         }
 
@@ -144,23 +144,23 @@ public class BuildLogParserUsage {
 
         let parser = DiagnosticsParser(rules: rules)
 
-        // 使用自定义输出
+        // Use custom output
         let outputURL = FileManager.default.temporaryDirectory
             .appendingPathComponent("diagnostics.txt")
         let fileOutput = FileOutput(url: outputURL)
         parser.addOutput(fileOutput)
 
-        // 模拟使用
+        // Simulation usage
         let input = StringInput("main.swift:10:5: error: use of unresolved identifier 'foo'")
 
         do {
             _ = try parser.parse(input: input)
         } catch {
-            print("解析错误: \(error)")
+            print("Parsing error: \(error)")
         }
     }
 
-    // 示例5：异步流式处理 (macOS 10.15+)
+    // Example 5: Async streaming processing (macOS 10.15+)
     @available(macOS 10.15, iOS 13.0, *)
     public static func demonstrateAsyncStreaming() async {
         let rules: [DiagnosticRule] = [
@@ -171,15 +171,15 @@ public class BuildLogParserUsage {
         let parser = DiagnosticsParser(rules: rules)
         parser.addOutput(PrintOutput())
 
-        // 模拟创建一个 pipe 用于流式输入
+        // Simulate creating a pipe for streaming input
         let pipe = Pipe()
         let writeHandle = pipe.fileHandleForWriting
         let readHandle = pipe.fileHandleForReading
 
-        // 创建异步输入
+        // Create async input
         let asyncInput = AsyncFileHandleInput(readHandle)
 
-        // 在后台写入数据
+        // Write data in background
         Task {
             let logData = Data("""
             main.swift:10:5: error: use of unresolved identifier 'foo'
@@ -198,9 +198,9 @@ public class BuildLogParserUsage {
             parser.addOutput(collectingOutput)
             try await parser.parse(input: asyncInput)
             let diagnostics = collectingOutput.getAllDiagnostics()
-            print("异步流式处理完成: \(diagnostics.count) 个诊断")
+            print("Async streaming processing completed: \(diagnostics.count) diagnostics")
         } catch {
-            print("异步处理错误: \(error)")
+            print("Async processing error: \(error)")
         }
     }
 }

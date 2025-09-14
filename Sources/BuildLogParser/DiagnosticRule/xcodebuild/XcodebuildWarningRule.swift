@@ -1,8 +1,11 @@
 import Foundation
 
-// MARK: - Xcodebuild Warning Rule
+// MARK: - XcodeBuild Warning Rule
 
-public struct XcodebuildWarningRule: DiagnosticRule {
+// Parse xcodebuild tool-level warning messages
+// Match format: --- xcodebuild: WARNING: message
+
+public struct XcodeBuildWarningRule: DiagnosticRule {
     private let warningRegex: NSRegularExpression = {
         do {
             return try NSRegularExpression(

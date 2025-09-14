@@ -7,7 +7,7 @@
 --wraparguments before-first
 --wrapcollections before-first
 
-# Enable specific rules (移除了 trailingCommas)
+# Enable specific rules (removed trailingCommas)
 --enable redundantSelf,trailingClosures,sortImports,emptyBraces,consecutiveSpaces
 --disable unusedArguments,trailingCommas
 

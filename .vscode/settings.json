@@ -1,5 +1,5 @@
 {
-    // 使用 SwiftFormat 作为 Swift 文件的格式化工具
+    // Use SwiftFormat as the formatting tool for Swift files
     "swift.formatTool": "swiftformat",
     "editor.formatOnSave": true,
     "editor.defaultFormatter": null,

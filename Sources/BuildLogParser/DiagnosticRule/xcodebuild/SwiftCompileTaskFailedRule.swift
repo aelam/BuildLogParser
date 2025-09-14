@@ -1,8 +1,11 @@
 import Foundation
 
-// MARK: - Swift Compile Failed Rule
+// MARK: - Swift Compilation Task Failed Rule
 
-public struct SwiftCompileFailedRule: DiagnosticRule {
+// Parse Swift compilation task failure messages in xcodebuild
+// Match format: SwiftCompile normal arm64 /path/to/file.swift (in target '...' from project '...')
+
+public struct SwiftCompileTaskFailedRule: DiagnosticRule {
     private let swiftCompileFailedRegex: NSRegularExpression = {
         do {
             return try NSRegularExpression(
@@ -37,22 +40,22 @@ public struct SwiftCompileFailedRule: DiagnosticRule {
             line: nil,
             column: nil,
             severity: .error,
-            message: "SwiftCompile failed for \(arch): \(files)",
+            message: "Swift compilation task failed for \(arch): \(files)",
             relatedMessages: [],
             source: "xcodebuild",
-            category: "swift_compile_failed",
+            category: "swift_compilation_task_failed",
             raw: line,
             buildTarget: "\(target) (\(project))"
         )
     }
 
     public func matchContinuation(line: String, current: Diagnostic?) -> Bool {
-        guard current?.category == "swift_compile_failed" else { return false }
-        return false // Swift compile failures are typically single line
+        guard current?.category == "swift_compilation_task_failed" else { return false }
+        return false // Swift compilation task failures are typically single line
     }
 
     public func isEnd(line: String, current: Diagnostic?) -> Bool {
-        guard current?.category == "swift_compile_failed" else { return false }
+        guard current?.category == "swift_compilation_task_failed" else { return false }
         return line.trimmingCharacters(in: .whitespaces).isEmpty ||
             line.hasPrefix("** BUILD FAILED **") ||
             line.hasPrefix("---")

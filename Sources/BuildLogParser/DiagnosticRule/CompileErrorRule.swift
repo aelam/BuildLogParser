@@ -7,10 +7,16 @@
 
 import Foundation
 
-// 通用编译器错误规则 - 支持 Swift, Objective-C, C/C++
-// 匹配格式: file.ext:line:column: error/warning: message
+// Generic compiler error rule - supports Swift, Objective-C, C/C++
+// Matches format: file.ext:line:column: error/warning: message
 public struct CompileErrorRule: DiagnosticRule {
-    public init() {}
+    private let source: String
+    private let categoryPrefix: String
+
+    public init(source: String = "compiler", categoryPrefix: String = "") {
+        self.source = source
+        self.categoryPrefix = categoryPrefix
+    }
 
     private let startRegex: NSRegularExpression = {
         do {
@@ -22,12 +28,18 @@ public struct CompileErrorRule: DiagnosticRule {
         }
     }()
 
+    public func fastFail(line: String) -> Bool {
+        // Quick checks to avoid regex if line definitely won't match
+        // Must contain ":" and either "error:" or "warning:"
+        line.contains(":") && (line.contains("error:") || line.contains("warning:"))
+    }
+
     public func matchStart(line: String) -> Diagnostic? {
         guard let match = startRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)) else {
             return nil
         }
 
-        // 安全地提取匹配的组
+        // Safely extract matched groups
         guard
             let fileRange = Range(match.range(at: 1), in: line),
             let lineNumRange = Range(match.range(at: 3), in: line),
@@ -42,7 +54,7 @@ public struct CompileErrorRule: DiagnosticRule {
         let severityStr = String(line[severityRange])
         let message = String(line[messageRange])
 
-        // 安全地转换数字
+        // Safely convert numbers
         guard
             let lineNum = Int(line[lineNumRange]),
             let colNum = Int(line[colNumRange])
@@ -52,6 +64,8 @@ public struct CompileErrorRule: DiagnosticRule {
 
         let severity: Diagnostic.Severity = (severityStr == "error" ? .error : .warning)
 
+        let category = categoryPrefix.isEmpty ? severityStr : "\(categoryPrefix)_\(severityStr)"
+
         return Diagnostic(
             file: file,
             line: lineNum,
@@ -59,8 +73,8 @@ public struct CompileErrorRule: DiagnosticRule {
             severity: severity,
             message: message,
             relatedMessages: [],
-            source: "swift",
-            category: severityStr,
+            source: source,
+            category: category,
             raw: line,
             buildTarget: nil,
         )

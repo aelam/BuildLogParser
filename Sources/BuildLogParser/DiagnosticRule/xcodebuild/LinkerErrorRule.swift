@@ -8,6 +8,11 @@
 public struct LinkerErrorRule: DiagnosticRule {
     public init() {}
 
+    public func fastFail(line: String) -> Bool {
+        // Quick check for linker-related keywords
+        line.contains("Undefined symbols") || line.contains("linker") || line.contains("ld:")
+    }
+
     public func matchStart(line: String) -> Diagnostic? {
         guard line.hasPrefix("Undefined symbols for architecture") else {
             return nil

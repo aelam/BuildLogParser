@@ -27,7 +27,7 @@ public struct BuildCommandFailedRule: DiagnosticRule {
         let target = String(line[targetRange])
         let project = String(line[projectRange])
 
-        // 跳过已经被 SwiftCompile 规则匹配的行
+        // Skip lines already matched by SwiftCompile rule
         if command.contains("SwiftCompile") {
             return nil
         }

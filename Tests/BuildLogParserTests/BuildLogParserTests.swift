@@ -26,7 +26,7 @@ struct BuildLogParserTests {
         _ = try parser.parse(input: input)
         let diagnostics = collectingOutput.getAllDiagnostics()
 
-        #expect(!diagnostics.isEmpty, "应该解析出至少一个诊断")
+        #expect(!diagnostics.isEmpty, "Should parse at least one diagnostic")
         print("Total diagnostics: \(diagnostics.count)")
     }
 
@@ -41,27 +41,27 @@ struct BuildLogParserTests {
         let parser = DiagnosticsParser(rules: rules)
         var receivedDiagnostics: [Diagnostic] = []
 
-        // 设置实时处理器
+        // Setup real-time processor
         let output = CallbackOutput { diagnostic in
             receivedDiagnostics.append(diagnostic)
-            print("🔍 实时发现诊断: \(diagnostic.severity) - \(diagnostic.message)")
+            print("🔍 Real-time diagnostic found: \(diagnostic.severity) - \(diagnostic.message)")
 
-            // 可以根据严重程度做不同处理
+            // Handle different severity levels
             switch diagnostic.severity {
             case .error:
-                print("❌ 错误: \(diagnostic.file ?? "unknown"):\(diagnostic.line ?? 0)")
+                print("❌ Error: \(diagnostic.file ?? "unknown"):\(diagnostic.line ?? 0)")
             case .warning:
-                print("⚠️  警告: \(diagnostic.message)")
+                print("⚠️  Warning: \(diagnostic.message)")
             case .info:
-                print("ℹ️  信息: \(diagnostic.message)")
+                print("ℹ️  Info: \(diagnostic.message)")
             case .note:
-                print("📝 注释: \(diagnostic.message)")
+                print("📝 Note: \(diagnostic.message)")
             }
         }
 
         parser.addOutput(output)
 
-        // 模拟流式输入
+        // Simulate streaming input
         let logLines = [
             "main.swift:10:5: error: use of unresolved identifier 'foo'",
             "main.swift:15:3: warning: variable 'bar' was never used",
@@ -76,9 +76,9 @@ struct BuildLogParserTests {
         _ = try parser.parse(input: input)
         let allDiagnostics = collectingOutput.getAllDiagnostics()
 
-        #expect(!allDiagnostics.isEmpty, "应该解析出至少一个诊断")
-        #expect(receivedDiagnostics.count == allDiagnostics.count, "输出应该接收到所有诊断")
-        print("✅ 处理完成，总共: \(allDiagnostics.count) 个诊断")
+        #expect(!allDiagnostics.isEmpty, "Should parse at least one diagnostic")
+        #expect(receivedDiagnostics.count == allDiagnostics.count, "Output should receive all diagnostics")
+        print("✅ Processing completed, total: \(allDiagnostics.count) diagnostics")
     }
 
     @Test
@@ -92,23 +92,23 @@ struct BuildLogParserTests {
         let parser = DiagnosticsParser(rules: rules)
         var errorDiagnostics: [Diagnostic] = []
 
-        // 只关注错误级别的诊断
+        // Only focus on error-level diagnostics
         let output = CallbackOutput { diagnostic in
             guard diagnostic.severity == .error else { return }
 
             errorDiagnostics.append(diagnostic)
-            print("🚨 严重错误: \(diagnostic.message)")
+            print("🚨 Critical error: \(diagnostic.message)")
             if let file = diagnostic.file, let line = diagnostic.line {
-                print("📍 位置: \(file):\(line)")
+                print("📍 Location: \(file):\(line)")
             }
 
-            // 可以立即通知开发者或中断构建
+            // Can immediately notify developer or interrupt build
             notifyDeveloper(diagnostic)
         }
 
         parser.addOutput(output)
 
-        // 模拟包含错误和警告的日志
+        // Simulate logs containing errors and warnings
         let logLines = [
             "main.swift:10:5: error: use of unresolved identifier 'foo'",
             "main.swift:15:3: warning: variable 'bar' was never used",
@@ -124,13 +124,13 @@ struct BuildLogParserTests {
         let allDiagnostics = collectingOutput.getAllDiagnostics()
         let actualErrors = allDiagnostics.filter { $0.severity == .error }
 
-        #expect(errorDiagnostics.count == actualErrors.count, "过滤后的错误数量应该匹配")
-        #expect(!errorDiagnostics.isEmpty, "应该至少有一个错误")
+        #expect(errorDiagnostics.count == actualErrors.count, "Filtered error count should match")
+        #expect(!errorDiagnostics.isEmpty, "Should have at least one error")
     }
 
     private func notifyDeveloper(_ diagnostic: Diagnostic) {
-        // 发送通知、邮件等
-        print("📧 已通知开发者关于错误: \(diagnostic.message)")
+        // Send notifications, emails, etc.
+        print("📧 Notified developer about error: \(diagnostic.message)")
     }
 
     @Test
@@ -141,7 +141,7 @@ struct BuildLogParserTests {
             XCTestRule()
         ]
 
-        // 测试字符串数组输入
+        // Test string array input
         let parser1 = DiagnosticsParser(rules: rules)
         let logLines = [
             "main.swift:10:5: error: use of unresolved identifier 'foo'",
@@ -152,9 +152,9 @@ struct BuildLogParserTests {
         parser1.addOutput(collectingOutput1)
         _ = try parser1.parse(input: input1)
         let result1 = collectingOutput1.getAllDiagnostics()
-        #expect(result1.count >= 1, "字符串数组输入应该解析出诊断")
+        #expect(result1.count >= 1, "String array input should parse diagnostics")
 
-        // 测试文本字符串输入
+        // Test text string input
         let parser2 = DiagnosticsParser(rules: rules)
         let logText = """
         main.swift:10:5: error: use of unresolved identifier 'foo'
@@ -165,9 +165,9 @@ struct BuildLogParserTests {
         parser2.addOutput(collectingOutput2)
         _ = try parser2.parse(input: input2)
         let result2 = collectingOutput2.getAllDiagnostics()
-        #expect(result2.count >= 1, "文本字符串输入应该解析出诊断")
+        #expect(result2.count >= 1, "Text string input should parse diagnostics")
 
-        // 测试 Data 输入
+        // Test Data input
         let parser3 = DiagnosticsParser(rules: rules)
         let logData = logText.data(using: .utf8)! // swiftlint:disable:this force_unwrapping
         let input3 = DataInput(logData)
@@ -175,11 +175,11 @@ struct BuildLogParserTests {
         parser3.addOutput(collectingOutput3)
         _ = try parser3.parse(input: input3)
         let result3 = collectingOutput3.getAllDiagnostics()
-        #expect(result3.count >= 1, "Data 输入应该解析出诊断")
+        #expect(result3.count >= 1, "Data input should parse diagnostics")
 
-        // 验证三种方式结果一致
-        #expect(result1.count == result2.count, "不同输入方式应该产生相同数量的诊断")
-        #expect(result2.count == result3.count, "不同输入方式应该产生相同数量的诊断")
+        // Verify that all three methods produce consistent results
+        #expect(result1.count == result2.count, "Different input methods should produce same diagnostic count")
+        #expect(result2.count == result3.count, "Different input methods should produce same diagnostic count")
     }
 
     @Test
@@ -198,7 +198,7 @@ struct BuildLogParserTests {
         }
         parser.addOutput(output)
 
-        // 测试异步流式处理
+        // Test asynchronous streaming processing
         let logText = """
         main.swift:10:5: error: use of unresolved identifier 'foo'
         Undefined symbols for architecture x86_64:
@@ -212,7 +212,82 @@ struct BuildLogParserTests {
         _ = try parser.parse(input: input)
         let allDiagnostics = collectingOutput.getAllDiagnostics()
 
-        #expect(receivedDiagnostics.count == allDiagnostics.count, "异步处理应该接收到所有诊断")
-        #expect(allDiagnostics.isEmpty == false, "应该解析出诊断")
+        #expect(receivedDiagnostics.count == allDiagnostics.count, "Async processing should receive all diagnostics")
+        #expect(allDiagnostics.isEmpty == false, "Should parse diagnostics")
+    }
+
+    @Test
+    func swiftBuildErrorTest() async throws {
+        print("\n🔍 Testing decomposed SwiftBuildRule parsing capability\n")
+
+        let swiftBuildRule = SwiftBuildRule()
+        let parser = DiagnosticsParser(rules: [swiftBuildRule])
+
+        // Simulate real swift build error output
+        let swiftBuildOutput = """
+        [1/1] Planning build
+        Building for debugging...
+        error: emit-module command failed with exit code 1 (use -v to see invocation)
+        /Users/test/TestError.swift:5:1: error: expressions are not allowed at the top level
+        3 | // Intentionally create compilation error
+        4 | let test = undefinedVariable
+        5 | print("Hello")
+          | `- error: expressions are not allowed at the top level
+
+        /Users/test/TestError.swift:4:12: error: cannot find 'undefinedVariable' in scope
+        2 | 
+        3 | // Intentionally create compilation error
+        4 | let test = undefinedVariable
+          |            `- error: cannot find 'undefinedVariable' in scope
+        5 | print("Hello")
+
+        [4/4] Compiling TestProject TestError.swift
+        """
+
+        let output = CollectingOutput()
+        parser.addOutput(output)
+
+        let input = StringInput(swiftBuildOutput)
+        _ = try parser.parse(input: input)
+
+        let diagnostics = output.getAllDiagnostics()
+
+        print("📊 Swift Build decomposed rule parsing results:")
+        print("Total diagnostics: \(diagnostics.count)")
+
+        // Group by category for display
+        let byCategory = Dictionary(grouping: diagnostics) { $0.category ?? "unknown" }
+        for (category, diags) in byCategory.sorted(by: { $0.key < $1.key }) {
+            print("  \(category): \(diags.count) items")
+        }
+
+        for (index, diagnostic) in diagnostics.enumerated() {
+            let location = diagnostic.file.map { "\($0):\(diagnostic.line ?? 0):\(diagnostic.column ?? 0)" } ?? "N/A"
+            print("[\(index + 1)] \(diagnostic.severity) (\(diagnostic.category ?? "unknown")) at \(location)")
+            print("    Message: \(diagnostic.message)")
+        }
+
+        // Verify parsing results
+        #expect(diagnostics.count >= 3, "Should parse at least 3 diagnostic messages")
+
+        let swiftBuildDiagnostics = diagnostics.filter { $0.source == "swift-build" }
+        #expect(swiftBuildDiagnostics.count >= 3, "Should have at least 3 swift-build source diagnostics")
+
+        // Verify module failure errors
+        let moduleErrors = diagnostics.filter { $0.category == "module_failed" }
+        #expect(moduleErrors.count == 1, "Should have 1 module failure error")
+
+        // Verify compilation errors
+        let compileErrors = diagnostics.filter { $0.category?.hasPrefix("compile_") == true }
+        #expect(compileErrors.count == 2, "Should have 2 compilation errors")
+
+        // Verify progress information
+        let progressInfo = diagnostics.filter { $0.category == "progress" }
+        #expect(progressInfo.count >= 1, "Should have at least 1 progress info")
+
+        print("\n✅ Swift Build decomposed rule parsing test passed")
+        print("   - Module failures: \(moduleErrors.count) items")
+        print("   - Compilation errors: \(compileErrors.count) items")
+        print("   - Progress info: \(progressInfo.count) items")
     }
 }

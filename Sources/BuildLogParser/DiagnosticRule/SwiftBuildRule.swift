@@ -1,26 +1,18 @@
-//
-//  XcodeBuildRule.swift
-//  BuildLogParser
-//
-//  Created by wang.lun on 2025/09/14.
-//
-
 import Foundation
 
-// MARK: - Composite XcodeBuildRule
+// MARK: - Composite Swift Build Rule
 
-public struct XcodeBuildRule: DiagnosticRule {
+// Composite rule containing all swift build related sub-rules
+
+public struct SwiftBuildRule: DiagnosticRule {
     private let subRules: [DiagnosticRule]
 
     public init() {
         subRules = [
-            CompileErrorRule(source: "xcodebuild"), // Generic compiler error rule with xcodebuild source
-            BuildFailedRule(),
-            XcodeBuildWarningRule(),
-            SwiftCompileTaskFailedRule(),
-            BuildCommandFailedRule(),
-            LinkerErrorRule(),
-            XCTestRule(),
+            CompileErrorRule(source: "swift", categoryPrefix: "compile"),
+            // Generic compiler error rule with swift-build source
+            SwiftBuildModuleFailedRule(), // Swift Build module failure
+            SwiftBuildProgressRule(), // Swift Build progress information
         ]
     }
 
@@ -49,6 +41,6 @@ public struct XcodeBuildRule: DiagnosticRule {
         for subRule in subRules where subRule.isEnd(line: line, current: current) {
             return true
         }
-        return true // Default end
+        return true // Default to end
     }
 }

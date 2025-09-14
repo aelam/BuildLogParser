@@ -13,7 +13,6 @@ public protocol DiagnosticInput {
     func readLines() throws -> AnySequence<String>
 }
 
-// 异步输入协议
 @available(macOS 10.15, iOS 13.0, *)
 public protocol AsyncDiagnosticInput {
     func readLines() async throws -> AsyncThrowingStream<String, Error>
@@ -23,7 +22,7 @@ public protocol AsyncDiagnosticInput {
 
 public protocol DiagnosticOutput {
     func write(_ diagnostic: Diagnostic)
-    func finish() // 不再需要传递诊断列表
+    func finish() // No longer need to pass diagnostic list
 }
 
 // MARK: - Input Implementations
@@ -100,7 +99,7 @@ public struct FileHandleInput: DiagnosticInput {
 
             buffer.append(data)
 
-            // 处理完整的行
+            // Process complete lines
             while let newlineRange = buffer.range(of: Data([0x0A])) { // \n
                 let lineData = buffer.subdata(in: 0 ..< newlineRange.lowerBound)
                 if let lineString = String(data: lineData, encoding: .utf8) {
@@ -110,7 +109,7 @@ public struct FileHandleInput: DiagnosticInput {
             }
         }
 
-        // 处理最后一行
+        // Process last line
         if !buffer.isEmpty, let lastLine = String(data: buffer, encoding: .utf8) {
             lines.append(lastLine.trimmingCharacters(in: .whitespacesAndNewlines))
         }
@@ -119,7 +118,7 @@ public struct FileHandleInput: DiagnosticInput {
     }
 }
 
-// 异步版本的 FileHandle 输入
+// Async version of FileHandle input
 @available(macOS 10.15, iOS 13.0, *)
 public struct AsyncFileHandleInput: AsyncDiagnosticInput {
     private let fileHandle: FileHandle
@@ -144,7 +143,7 @@ public struct AsyncFileHandleInput: AsyncDiagnosticInput {
                     let data = Data(bytes: buffer, count: bytesRead)
                     lineBuffer.append(data)
 
-                    // 处理完整的行
+                    // Process complete lines
                     while let newlineIndex = lineBuffer.firstIndex(of: 0x0A) {
                         let lineData = lineBuffer.prefix(through: newlineIndex)
                         lineBuffer.removeFirst(lineData.count)
@@ -157,7 +156,7 @@ public struct AsyncFileHandleInput: AsyncDiagnosticInput {
                         }
                     }
                 } else if bytesRead == 0 {
-                    // EOF - 处理最后一行
+                    // EOF - process last line
                     if !lineBuffer.isEmpty, let string = String(data: lineBuffer, encoding: .utf8) {
                         let finalString = string.trimmingCharacters(in: .whitespacesAndNewlines)
                         if !finalString.isEmpty {
@@ -216,7 +215,7 @@ public class CollectingOutput: DiagnosticOutput {
     }
 
     public func finish() {
-        // 可以在这里做最终处理
+        // Can perform final processing here
     }
 
     public func getAllDiagnostics() -> [Diagnostic] {
@@ -244,7 +243,7 @@ public struct PrintOutput: DiagnosticOutput {
     }
 
     public func finish() {
-        print("✅ 解析完成")
+        print("✅ Parsing completed")
     }
 }
 
@@ -257,9 +256,21 @@ public enum DiagnosticError: Error {
 }
 
 public protocol DiagnosticRule {
+    /// Fast fail check to avoid expensive regex operations
+    /// Return false if this line definitely won't match this rule
+    /// Return true if this line might match (will proceed to matchStart)
+    func fastFail(line: String) -> Bool
+
     func matchStart(line: String) -> Diagnostic?
     func matchContinuation(line: String, current: Diagnostic?) -> Bool
     func isEnd(line: String, current: Diagnostic?) -> Bool
+}
+
+public extension DiagnosticRule {
+    /// Default implementation always returns true (no fast fail)
+    func fastFail(line: String) -> Bool {
+        true
+    }
 }
 
 public class DiagnosticsParser {
@@ -271,18 +282,18 @@ public class DiagnosticsParser {
         self.rules = rules
     }
 
-    // 添加输出处理器
+    // Add output processor
     public func addOutput(_ output: DiagnosticOutput) {
         outputs.append(output)
     }
 
-    // 便捷方法：设置回调输出
+    // Convenience method: set callback output
     public func setDiagnosticHandler(_ handler: @escaping (Diagnostic) -> Void) {
         let callbackOutput = CallbackOutput(onDiagnostic: handler)
         addOutput(callbackOutput)
     }
 
-    // 处理输入源
+    // Process input source
     public func parse(input: DiagnosticInput) throws {
         let lines = try input.readLines()
         for line in lines {
@@ -291,7 +302,7 @@ public class DiagnosticsParser {
         finish()
     }
 
-    // 异步处理输入源
+    // Async process input source
     @available(macOS 10.15, iOS 13.0, *)
     public func parse(input: AsyncDiagnosticInput) async throws {
         let lineStream = try await input.readLines()
@@ -304,12 +315,12 @@ public class DiagnosticsParser {
     }
 
     private func consumeLine(_ line: String) {
-        // 检查是否是结束条件
+        // Check if it's an end condition
         for rule in rules where rule.isEnd(line: line, current: current) {
             flush()
-            // 检查这一行是否同时是新诊断的开始
+            // Check if this line is also the start of a new diagnostic
             for startRule in rules {
-                if let diag = startRule.matchStart(line: line) {
+                if startRule.fastFail(line: line), let diag = startRule.matchStart(line: line) {
                     current = diag
                     return
                 }
@@ -317,24 +328,24 @@ public class DiagnosticsParser {
             return
         }
 
-        // 检查是否是继续行
+        // Check if it's a continuation line
         for rule in rules where rule.matchContinuation(line: line, current: current) {
             current?.relatedMessages.append(line)
             return
         }
 
-        // 检查是否是新诊断的开始
+        // Check if it's the start of a new diagnostic
         for rule in rules {
-            if let diag = rule.matchStart(line: line) {
-                flush() // 先保存当前的诊断
+            if rule.fastFail(line: line), let diag = rule.matchStart(line: line) {
+                flush() // First save the current diagnostic
                 current = diag
                 return
             }
         }
 
-        // 如果都不匹配，且当前有诊断，可能需要结束当前诊断
+        // If nothing matches and there's a current diagnostic, may need to end it
         if current != nil {
-            // 检查是否所有规则都认为应该结束
+            // Check if all rules think it should end
             let shouldEnd = rules.allSatisfy { rule in
                 rule.isEnd(line: line, current: current)
             }
@@ -347,7 +358,7 @@ public class DiagnosticsParser {
     public func finish() {
         flush()
 
-        // 通知所有输出处理器处理完成
+        // Notify all output processors that processing is complete
         for output in outputs {
             output.finish()
         }
@@ -355,7 +366,7 @@ public class DiagnosticsParser {
 
     private func flush() {
         if let diag = current {
-            // 通知所有输出处理器
+            // Notify all output processors
             for output in outputs {
                 output.write(diag)
             }
