@@ -5,6 +5,11 @@ import PackageDescription
 
 let package = Package(
     name: "BuildLogParser",
+    // Linux and Windows support are implicit in SPM
+    // Only specify minimum versions for Apple platforms
+    platforms: [
+        .macOS(.v10_15)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(

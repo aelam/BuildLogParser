@@ -13,7 +13,7 @@ public protocol DiagnosticInput {
     func readLines() throws -> AnySequence<String>
 }
 
-@available(macOS 10.15, iOS 13.0, *)
+@available(macOS 10.15, *)
 public protocol AsyncDiagnosticInput {
     func readLines() async throws -> AsyncThrowingStream<String, Error>
 }
@@ -119,7 +119,7 @@ public struct FileHandleInput: DiagnosticInput {
 }
 
 // Async version of FileHandle input
-@available(macOS 10.15, iOS 13.0, *)
+@available(macOS 10.15, *)
 public struct AsyncFileHandleInput: AsyncDiagnosticInput {
     private let fileHandle: FileHandle
 
@@ -303,7 +303,7 @@ public class DiagnosticsParser {
     }
 
     // Async process input source
-    @available(macOS 10.15, iOS 13.0, *)
+    @available(macOS 10.15, *)
     public func parse(input: AsyncDiagnosticInput) async throws {
         let lineStream = try await input.readLines()
 
