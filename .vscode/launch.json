@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:BuildLogParser}",
+            "name": "Debug buildlog-parser",
+            "program": "${workspaceFolder:BuildLogParser}/.build/debug/buildlog-parser",
+            "preLaunchTask": "swift: Build Debug buildlog-parser"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:BuildLogParser}",
+            "name": "Release buildlog-parser",
+            "program": "${workspaceFolder:BuildLogParser}/.build/release/buildlog-parser",
+            "preLaunchTask": "swift: Build Release buildlog-parser"
+        }
+    ]
+}
