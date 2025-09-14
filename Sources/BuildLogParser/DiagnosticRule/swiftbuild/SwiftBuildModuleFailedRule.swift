@@ -19,19 +19,20 @@ public struct SwiftBuildModuleFailedRule: DiagnosticRule {
 
     public init() {}
 
-    public func matchStart(line: String) -> Diagnostic? {
-        guard let match = moduleFailedRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)) else {
-            return nil
-        }
+    public func fastFail(line: String) -> Bool {
+        line.hasPrefix("error: emit-module command failed")
+    }
 
-        guard let exitCodeRange = Range(match.range(at: 1), in: line) else {
+    public func matchStart(line: String) -> Diagnostic? {
+        guard
+            let match = moduleFailedRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)),
+            let exitCodeRange = Range(match.range(at: 1), in: line)
+        else {
             return nil
         }
 
         let exitCode = String(line[exitCodeRange])
-        let additionalInfo = if match.range(at: 2).location != NSNotFound,
-                                let additionalRange = Range(match.range(at: 2), in: line)
-        {
+        let additionalInfo = if let additionalRange = Range(match.range(at: 2), in: line) {
             String(line[additionalRange])
         } else {
             ""

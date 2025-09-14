@@ -1,0 +1,87 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggered on version tags like v1.0.0
+
+jobs:
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+  build-and-test:
+    name: Build and Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        swift-version: ['5.10']
+        
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Swift
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: ${{ matrix.swift-version }}
+        
+    - name: Build and test
+      run: |
+        swift --version
+        swift build -c release
+        swift test
+        
+    - name: Archive build artifacts
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        tar -czf BuildLogParser-linux.tar.gz -C .build/release BuildLogParser || true
+        
+    - name: Archive build artifacts (macOS)
+      if: matrix.os == 'macos-latest'  
+      run: |
+        tar -czf BuildLogParser-macos.tar.gz -C .build/release BuildLogParser || true
+
+  verify-cross-platform:
+    name: Final Cross-Platform Verification
+    runs-on: ${{ matrix.os }}
+    needs: build-and-test
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Swift
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: '5.10'
+        
+    - name: Final verification
+      run: |
+        echo "Final cross-platform verification for release..."
+        swift build -c release
+        swift test
+        echo "Release verification completed successfully on ${{ matrix.os }}!"

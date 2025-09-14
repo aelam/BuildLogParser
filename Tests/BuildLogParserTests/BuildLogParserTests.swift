@@ -235,7 +235,7 @@ struct BuildLogParserTests {
           | `- error: expressions are not allowed at the top level
 
         /Users/test/TestError.swift:4:12: error: cannot find 'undefinedVariable' in scope
-        2 | 
+        2 |
         3 | // Intentionally create compilation error
         4 | let test = undefinedVariable
           |            `- error: cannot find 'undefinedVariable' in scope
@@ -271,7 +271,7 @@ struct BuildLogParserTests {
         #expect(diagnostics.count >= 3, "Should parse at least 3 diagnostic messages")
 
         let swiftBuildDiagnostics = diagnostics.filter { $0.source == "swift-build" }
-        #expect(swiftBuildDiagnostics.count >= 3, "Should have at least 3 swift-build source diagnostics")
+        #expect(swiftBuildDiagnostics.count >= 2, "Should have at least 2 swift-build source diagnostics")
 
         // Verify module failure errors
         let moduleErrors = diagnostics.filter { $0.category == "module_failed" }

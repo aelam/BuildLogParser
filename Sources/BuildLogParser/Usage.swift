@@ -161,7 +161,7 @@ public class BuildLogParserUsage {
     }
 
     // Example 5: Async streaming processing (macOS 10.15+)
-    @available(macOS 10.15, iOS 13.0, *)
+    @available(macOS 10.15, *)
     public static func demonstrateAsyncStreaming() async {
         let rules: [DiagnosticRule] = [
             CompileErrorRule(),

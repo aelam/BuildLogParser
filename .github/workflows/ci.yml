@@ -1,0 +1,157 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        swift-version: ['5.9', '5.10']
+        include:
+          # Add specific configurations if needed
+          - os: ubuntu-latest
+            swift-container: swift:5.9-jammy
+          - os: ubuntu-latest  
+            swift-container: swift:5.10-jammy
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # macOS Swift setup
+    - name: Setup Swift (macOS)
+      if: runner.os == 'macOS'
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: ${{ matrix.swift-version }}
+
+    # Linux Swift setup
+    - name: Setup Swift (Linux)
+      if: runner.os == 'Linux'
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: ${{ matrix.swift-version }}
+
+    - name: Print Swift version
+      run: swift --version
+
+    - name: Resolve package dependencies
+      run: swift package resolve
+
+    - name: Build
+      run: swift build --verbose
+
+    - name: Run tests
+      run: swift test --verbose
+
+    - name: Build release
+      run: swift build -c release --verbose
+
+  # Additional job for testing on older macOS if needed
+  compatibility-test:
+    name: Compatibility Test
+    runs-on: macos-12  # Older macOS version
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Swift
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: '5.9'
+        
+    - name: Test minimum macOS version compatibility
+      run: |
+        swift --version
+        swift build
+        swift test
+
+  # Lint and format checking
+  lint:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Swift
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: '5.10'
+        
+    - name: Check Swift format
+      run: |
+        # Install swift-format if available
+        if command -v swift-format >/dev/null 2>&1; then
+          swift-format --version
+          find Sources Tests -name "*.swift" | xargs swift-format lint --strict
+        else
+          echo "swift-format not available, skipping format check"
+        fi
+        
+    - name: Check for TODO/FIXME comments
+      run: |
+        if grep -r "TODO\|FIXME" Sources/ Tests/ --include="*.swift"; then
+          echo "Found TODO or FIXME comments. Please address them."
+          exit 1
+        else
+          echo "No TODO or FIXME comments found."
+        fi
+
+  # Cross-platform verification
+  cross-platform:
+    name: Cross-Platform Verification
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Swift
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: '5.10'
+        
+    - name: Verify cross-platform APIs
+      run: |
+        echo "Verifying that only cross-platform APIs are used..."
+        
+        # Check for platform-specific imports
+        if grep -r "import UIKit\|import AppKit\|import WatchKit" Sources/ --include="*.swift"; then
+          echo "Found platform-specific imports!"
+          exit 1
+        fi
+        
+        # Check for platform-specific availability attributes
+        if grep -r "@available.*iOS\|@available.*watchOS\|@available.*tvOS" Sources/ --include="*.swift"; then
+          echo "Found mobile platform availability attributes!"
+          exit 1
+        fi
+        
+        echo "Cross-platform verification passed!"
+        
+    - name: Test actual functionality
+      run: |
+        swift build
+        swift test
+        
+        # Test with sample data if available
+        if [ -f "Tests/BuildLogParserTests/Resources/build.log" ]; then
+          echo "Testing with sample build log..."
+          # Add actual test command here if you have a CLI
+        fi
