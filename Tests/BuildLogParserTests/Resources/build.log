@@ -1,0 +1,672 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -workspace UserStickers.xcworkspace/ -scheme UserStickers build
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (89 targets)
+    Target 'UserStickers' in project 'UserStickers'
+        ➜ Explicit dependency on target 'UserStickersNotificationService' in project 'UserStickers'
+        ➜ Explicit dependency on target 'UserStickersShareExtension' in project 'UserStickers'
+        ➜ Implicit dependency on target 'Pods-UserStickers' in project 'Pods' via file 'Pods_UserStickers.framework' in build phase 'Link Binary'
+        ➜ Implicit dependency on target 'APNGEncoder' in project 'Pods' via options '-framework APNGEncoder' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'APNGKit' in project 'Pods' via options '-framework APNGKit' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'Alamofire' in project 'Pods' via options '-framework Alamofire' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'Crossroad' in project 'Pods' via options '-framework Crossroad' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'Delegate' in project 'Pods' via options '-framework Delegate' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'UnicodeEastAsianWidth' in project 'Pods' via options '-framework EastAsianWidth' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'Editor' in project 'Pods' via options '-framework Editor' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'PromisesObjC' in project 'Pods' via options '-framework FBLPromises' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseABTesting' in project 'Pods' via options '-framework FirebaseABTesting' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseCore' in project 'Pods' via options '-framework FirebaseCore' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseCoreInternal' in project 'Pods' via options '-framework FirebaseCoreInternal' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseInstallations' in project 'Pods' via options '-framework FirebaseInstallations' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseMessaging' in project 'Pods' via options '-framework FirebaseMessaging' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseRemoteConfig' in project 'Pods' via options '-framework FirebaseRemoteConfig' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseRemoteConfigInterop' in project 'Pods' via options '-framework FirebaseRemoteConfigInterop' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseSharedSwift' in project 'Pods' via options '-framework FirebaseSharedSwift' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'GlobalRouter' in project 'Pods' via options '-framework GlobalRouter' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'GoogleDataTransport' in project 'Pods' via options '-framework GoogleDataTransport' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'GoogleUtilities' in project 'Pods' via options '-framework GoogleUtilities' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'ImageFilter' in project 'Pods' via options '-framework ImageFilter' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'imglyKitSource' in project 'Pods' via options '-framework ImglyKit' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'JPSVolumeButtonHandler' in project 'Pods' via options '-framework JPSVolumeButtonHandler' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'Kingfisher' in project 'Pods' via options '-framework Kingfisher' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCNotice' in project 'Pods' via options '-framework LCNotice' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSAPIService' in project 'Pods' via options '-framework LCSAPIService' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSColors' in project 'Pods' via options '-framework LCSColors' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSComponents' in project 'Pods' via options '-framework LCSComponents' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSEvents' in project 'Pods' via options '-framework LCSEvents' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSFeatureFlag' in project 'Pods' via options '-framework LCSFeatureFlag' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSImageEditorPlugin' in project 'Pods' via options '-framework LCSImageEditorPlugin' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSL10n' in project 'Pods' via options '-framework LCSL10n' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSLINESimulator' in project 'Pods' via options '-framework LCSLINESimulator' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSMediaPicker' in project 'Pods' via options '-framework LCSMediaPicker' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSMockAPIClient' in project 'Pods' via options '-framework LCSMockAPIClient' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSMyPackages' in project 'Pods' via options '-framework LCSMyPackages' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSNoticeService' in project 'Pods' via options '-framework LCSNoticeService' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSRemoteConfig' in project 'Pods' via options '-framework LCSRemoteConfig' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSRepositories' in project 'Pods' via options '-framework LCSRepositories' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSShapeMask' in project 'Pods' via options '-framework LCSShapeMask' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSStickerManagement' in project 'Pods' via options '-framework LCSStickerManagement' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSSubmissionFlow' in project 'Pods' via options '-framework LCSSubmissionFlow' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSSwiftUIModule' in project 'Pods' via options '-framework LCSSwiftUIModule' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSUserInfoEdit' in project 'Pods' via options '-framework LCSUserInfoEdit' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LCSUserSettings' in project 'Pods' via options '-framework LCSUserSettings' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'LineSDKSwift' in project 'Pods' via options '-framework LineSDK' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'lottie-ios' in project 'Pods' via options '-framework Lottie' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'OpenCVWrapper' in project 'Pods' via options '-framework OpenCVWrapper' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'PhotoEditorSDKSource' in project 'Pods' via options '-framework PhotoEditorSDK' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'PhotoStudio' in project 'Pods' via options '-framework PhotoStudio' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'Preference' in project 'Pods' via options '-framework Preference' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'Realm' in project 'Pods' via options '-framework Realm' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'RealmSwift' in project 'Pods' via options '-framework RealmSwift' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'Sentry' in project 'Pods' via options '-framework Sentry' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'SharedFileManagement' in project 'Pods' via options '-framework SharedFileManagement' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'StudioDataStoreService' in project 'Pods' via options '-framework StudioDataStoreService' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'StudioFoundation' in project 'Pods' via options '-framework StudioFoundation' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'TrackingService' in project 'Pods' via options '-framework TrackingService' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'VideoFrameExtractor' in project 'Pods' via options '-framework VideoFrameExtractor' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'nanopb' in project 'Pods' via options '-framework nanopb' in build setting 'OTHER_LDFLAGS'
+    Target 'Pods-UserStickers' in project 'Pods'
+        ➜ Explicit dependency on target 'APNGEncoder' in project 'Pods'
+        ➜ Explicit dependency on target 'APNGKit' in project 'Pods'
+        ➜ Explicit dependency on target 'Alamofire' in project 'Pods'
+        ➜ Explicit dependency on target 'Crossroad' in project 'Pods'
+        ➜ Explicit dependency on target 'Delegate' in project 'Pods'
+        ➜ Explicit dependency on target 'Editor' in project 'Pods'
+        ➜ Explicit dependency on target 'Firebase-Analytics-Core-CoreOnly-Messaging' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseABTesting' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseAnalytics' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCoreInternal' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseInstallations' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseMessaging' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseRemoteConfig' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseRemoteConfigInterop' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseSharedSwift' in project 'Pods'
+        ➜ Explicit dependency on target 'FusionAppShared' in project 'Pods'
+        ➜ Explicit dependency on target 'GlobalRouter' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleAppMeasurement' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleDataTransport' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+        ➜ Explicit dependency on target 'ImageFilter' in project 'Pods'
+        ➜ Explicit dependency on target 'JPSVolumeButtonHandler' in project 'Pods'
+        ➜ Explicit dependency on target 'Kingfisher' in project 'Pods'
+        ➜ Explicit dependency on target 'LCNotice' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSAPIService' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSComponents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSFeatureFlag' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSImageEditorPlugin' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSLINESimulator' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSMediaPicker' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSMockAPIClient' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSMyPackages' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSNoticeService' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSRemoteConfig' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSRepositories' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSShapeMask' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSStickerManagement' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSSubmissionFlow' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSSwiftUIModule' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSUserInfoEdit' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSUserSettings' in project 'Pods'
+        ➜ Explicit dependency on target 'LineSDKSwift' in project 'Pods'
+        ➜ Explicit dependency on target 'OpenCVWrapper' in project 'Pods'
+        ➜ Explicit dependency on target 'PhotoEditorSDKSource' in project 'Pods'
+        ➜ Explicit dependency on target 'PhotoStudio' in project 'Pods'
+        ➜ Explicit dependency on target 'Preference' in project 'Pods'
+        ➜ Explicit dependency on target 'PromisesObjC' in project 'Pods'
+        ➜ Explicit dependency on target 'Realm' in project 'Pods'
+        ➜ Explicit dependency on target 'RealmSwift' in project 'Pods'
+        ➜ Explicit dependency on target 'Sentry' in project 'Pods'
+        ➜ Explicit dependency on target 'SharedFileManagement' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioDataStoreService' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+        ➜ Explicit dependency on target 'TrackingService' in project 'Pods'
+        ➜ Explicit dependency on target 'UnicodeEastAsianWidth' in project 'Pods'
+        ➜ Explicit dependency on target 'VideoFrameExtractor' in project 'Pods'
+        ➜ Explicit dependency on target 'imglyKitSource' in project 'Pods'
+        ➜ Explicit dependency on target 'lottie-ios' in project 'Pods'
+        ➜ Explicit dependency on target 'nanopb' in project 'Pods'
+    Target 'TrackingService' in project 'Pods'
+        ➜ Explicit dependency on target 'TrackingService-TrackingService_PrivacyManifest' in project 'Pods'
+    Target 'TrackingService-TrackingService_PrivacyManifest' in project 'Pods' (no dependencies)
+    Target 'Sentry' in project 'Pods'
+        ➜ Explicit dependency on target 'Sentry-Sentry' in project 'Pods'
+    Target 'Sentry-Sentry' in project 'Pods' (no dependencies)
+    Target 'PhotoStudio' in project 'Pods'
+        ➜ Explicit dependency on target 'JPSVolumeButtonHandler' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'OpenCVWrapper' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'OpenCVWrapper' in project 'Pods' (no dependencies)
+    Target 'LCSUserSettings' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSImageEditorPlugin' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSNoticeService' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSUserInfoEdit' in project 'Pods'
+    Target 'LCSSwiftUIModule' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSAPIService' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSComponents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'LCSSubmissionFlow' in project 'Pods'
+        ➜ Explicit dependency on target 'APNGEncoder' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSAPIService' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSComponents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSFeatureFlag' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSRepositories' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioDataStoreService' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'LCSStickerManagement' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSComponents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioDataStoreService' in project 'Pods'
+    Target 'LCSRemoteConfig' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseRemoteConfig' in project 'Pods'
+    Target 'LCSNoticeService' in project 'Pods'
+        ➜ Explicit dependency on target 'GlobalRouter' in project 'Pods'
+        ➜ Explicit dependency on target 'LCNotice' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'LCSMyPackages' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSFeatureFlag' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSUserInfoEdit' in project 'Pods'
+    Target 'LCSUserInfoEdit' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSComponents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSRepositories' in project 'Pods'
+    Target 'LCSMockAPIClient' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSAPIService' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'LCNotice' in project 'Pods'
+        ➜ Explicit dependency on target 'LCNotice-LCNotice' in project 'Pods'
+    Target 'LCNotice-LCNotice' in project 'Pods' (no dependencies)
+    Target 'JPSVolumeButtonHandler' in project 'Pods' (no dependencies)
+    Target 'GlobalRouter' in project 'Pods'
+        ➜ Explicit dependency on target 'Crossroad' in project 'Pods'
+    Target 'FusionAppShared' in project 'Pods' (no dependencies)
+    Target 'FirebaseRemoteConfig' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseABTesting' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseInstallations' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseRemoteConfig-FirebaseRemoteConfig_Privacy' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseRemoteConfigInterop' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseSharedSwift' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+    Target 'FirebaseSharedSwift' in project 'Pods' (no dependencies)
+    Target 'FirebaseRemoteConfigInterop' in project 'Pods' (no dependencies)
+    Target 'FirebaseRemoteConfig-FirebaseRemoteConfig_Privacy' in project 'Pods' (no dependencies)
+    Target 'FirebaseABTesting' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseABTesting-FirebaseABTesting_Privacy' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore' in project 'Pods'
+    Target 'FirebaseABTesting-FirebaseABTesting_Privacy' in project 'Pods' (no dependencies)
+    Target 'Firebase-Analytics-Core-CoreOnly-Messaging' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseAnalytics' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseMessaging' in project 'Pods'
+    Target 'FirebaseAnalytics' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseInstallations' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleAppMeasurement' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+        ➜ Explicit dependency on target 'nanopb' in project 'Pods'
+    Target 'GoogleAppMeasurement' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+        ➜ Explicit dependency on target 'nanopb' in project 'Pods'
+    Target 'Editor' in project 'Pods'
+        ➜ Explicit dependency on target 'APNGEncoder' in project 'Pods'
+        ➜ Explicit dependency on target 'APNGKit' in project 'Pods'
+        ➜ Explicit dependency on target 'ImageFilter' in project 'Pods'
+        ➜ Explicit dependency on target 'Kingfisher' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSImageEditorPlugin' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSLINESimulator' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSMediaPicker' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSRepositories' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSShapeMask' in project 'Pods'
+        ➜ Explicit dependency on target 'PhotoEditorSDKSource' in project 'Pods'
+        ➜ Explicit dependency on target 'Preference' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+        ➜ Explicit dependency on target 'VideoFrameExtractor' in project 'Pods'
+        ➜ Explicit dependency on target 'lottie-ios' in project 'Pods'
+    Target 'lottie-ios' in project 'Pods'
+        ➜ Explicit dependency on target 'lottie-ios-LottiePrivacyInfo' in project 'Pods'
+    Target 'lottie-ios-LottiePrivacyInfo' in project 'Pods' (no dependencies)
+    Target 'VideoFrameExtractor' in project 'Pods' (no dependencies)
+    Target 'PhotoEditorSDKSource' in project 'Pods'
+        ➜ Explicit dependency on target 'imglyKitSource' in project 'Pods'
+    Target 'imglyKitSource' in project 'Pods' (no dependencies)
+    Target 'LCSShapeMask' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'LCSMediaPicker' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSComponents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSFeatureFlag' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'LCSLINESimulator' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSComponents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'LCSImageEditorPlugin' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSComponents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSEvents' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSRepositories' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioDataStoreService' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'LCSRepositories' in project 'Pods'
+        ➜ Explicit dependency on target 'Kingfisher' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSAPIService' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioDataStoreService' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'StudioDataStoreService' in project 'Pods'
+        ➜ Explicit dependency on target 'RealmSwift' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'RealmSwift' in project 'Pods'
+        ➜ Explicit dependency on target 'Realm' in project 'Pods'
+        ➜ Explicit dependency on target 'RealmSwift-realm_swift_privacy' in project 'Pods'
+    Target 'RealmSwift-realm_swift_privacy' in project 'Pods' (no dependencies)
+    Target 'Realm' in project 'Pods'
+        ➜ Explicit dependency on target 'Realm-realm_objc_privacy' in project 'Pods'
+    Target 'Realm-realm_objc_privacy' in project 'Pods' (no dependencies)
+    Target 'LCSEvents' in project 'Pods' (no dependencies)
+    Target 'LCSComponents' in project 'Pods'
+        ➜ Explicit dependency on target 'APNGKit' in project 'Pods'
+        ➜ Explicit dependency on target 'Kingfisher' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSAPIService' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSColors' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSL10n' in project 'Pods'
+        ➜ Explicit dependency on target 'Preference' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+        ➜ Explicit dependency on target 'UnicodeEastAsianWidth' in project 'Pods'
+    Target 'UnicodeEastAsianWidth' in project 'Pods' (no dependencies)
+    Target 'LCSL10n' in project 'Pods' (no dependencies)
+    Target 'LCSAPIService' in project 'Pods'
+        ➜ Explicit dependency on target 'Alamofire' in project 'Pods'
+        ➜ Explicit dependency on target 'LCSFeatureFlag' in project 'Pods'
+        ➜ Explicit dependency on target 'LineSDKSwift' in project 'Pods'
+        ➜ Explicit dependency on target 'Preference' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'LineSDKSwift' in project 'Pods'
+        ➜ Explicit dependency on target 'LineSDKSwift-LineSDK' in project 'Pods'
+    Target 'LineSDKSwift-LineSDK' in project 'Pods' (no dependencies)
+    Target 'LCSFeatureFlag' in project 'Pods'
+        ➜ Explicit dependency on target 'Preference' in project 'Pods'
+    Target 'LCSColors' in project 'Pods' (no dependencies)
+    Target 'Kingfisher' in project 'Pods'
+        ➜ Explicit dependency on target 'Kingfisher-Kingfisher' in project 'Pods'
+    Target 'Kingfisher-Kingfisher' in project 'Pods' (no dependencies)
+    Target 'ImageFilter' in project 'Pods'
+        ➜ Explicit dependency on target 'Preference' in project 'Pods'
+        ➜ Explicit dependency on target 'StudioFoundation' in project 'Pods'
+    Target 'StudioFoundation' in project 'Pods' (no dependencies)
+    Target 'Preference' in project 'Pods' (no dependencies)
+    Target 'Crossroad' in project 'Pods' (no dependencies)
+    Target 'Alamofire' in project 'Pods'
+        ➜ Explicit dependency on target 'Alamofire-Alamofire' in project 'Pods'
+    Target 'Alamofire-Alamofire' in project 'Pods' (no dependencies)
+    Target 'APNGKit' in project 'Pods'
+        ➜ Explicit dependency on target 'Delegate' in project 'Pods'
+    Target 'Delegate' in project 'Pods' (no dependencies)
+    Target 'APNGEncoder' in project 'Pods' (no dependencies)
+    Target 'UserStickersShareExtension' in project 'UserStickers'
+        ➜ Implicit dependency on target 'Pods-UserStickersShareExtension' in project 'Pods' via file 'Pods_UserStickersShareExtension.framework' in build phase 'Link Binary'
+        ➜ Implicit dependency on target 'SharedFileManagement' in project 'Pods' via options '-framework SharedFileManagement' in build setting 'OTHER_LDFLAGS'
+    Target 'Pods-UserStickersShareExtension' in project 'Pods'
+        ➜ Explicit dependency on target 'SharedFileManagement' in project 'Pods'
+    Target 'SharedFileManagement' in project 'Pods' (no dependencies)
+    Target 'UserStickersNotificationService' in project 'UserStickers'
+        ➜ Implicit dependency on target 'Pods-UserStickersNotificationService' in project 'Pods' via file 'Pods_UserStickersNotificationService.framework' in build phase 'Link Binary'
+        ➜ Implicit dependency on target 'PromisesObjC' in project 'Pods' via options '-framework FBLPromises' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseCore' in project 'Pods' via options '-framework FirebaseCore' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseCoreInternal' in project 'Pods' via options '-framework FirebaseCoreInternal' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseInstallations' in project 'Pods' via options '-framework FirebaseInstallations' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'FirebaseMessaging' in project 'Pods' via options '-framework FirebaseMessaging' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'GoogleDataTransport' in project 'Pods' via options '-framework GoogleDataTransport' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'GoogleUtilities' in project 'Pods' via options '-framework GoogleUtilities' in build setting 'OTHER_LDFLAGS'
+        ➜ Implicit dependency on target 'nanopb' in project 'Pods' via options '-framework nanopb' in build setting 'OTHER_LDFLAGS'
+    Target 'Pods-UserStickersNotificationService' in project 'Pods'
+        ➜ Explicit dependency on target 'Firebase-CoreOnly-Messaging' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCoreInternal' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseInstallations' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseMessaging' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleDataTransport' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+        ➜ Explicit dependency on target 'PromisesObjC' in project 'Pods'
+        ➜ Explicit dependency on target 'nanopb' in project 'Pods'
+    Target 'Firebase-CoreOnly-Messaging' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseMessaging' in project 'Pods'
+    Target 'FirebaseMessaging' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseInstallations' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseMessaging-FirebaseMessaging_Privacy' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleDataTransport' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+        ➜ Explicit dependency on target 'nanopb' in project 'Pods'
+    Target 'GoogleDataTransport' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleDataTransport-GoogleDataTransport_Privacy' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+        ➜ Explicit dependency on target 'PromisesObjC' in project 'Pods'
+        ➜ Explicit dependency on target 'nanopb' in project 'Pods'
+    Target 'nanopb' in project 'Pods'
+        ➜ Explicit dependency on target 'nanopb-nanopb_Privacy' in project 'Pods'
+    Target 'nanopb-nanopb_Privacy' in project 'Pods' (no dependencies)
+    Target 'GoogleDataTransport-GoogleDataTransport_Privacy' in project 'Pods' (no dependencies)
+    Target 'FirebaseMessaging-FirebaseMessaging_Privacy' in project 'Pods' (no dependencies)
+    Target 'FirebaseInstallations' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseInstallations-FirebaseInstallations_Privacy' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+        ➜ Explicit dependency on target 'PromisesObjC' in project 'Pods'
+    Target 'FirebaseInstallations-FirebaseInstallations_Privacy' in project 'Pods' (no dependencies)
+    Target 'FirebaseCore' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCore-FirebaseCore_Privacy' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCoreInternal' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+    Target 'FirebaseCoreInternal' in project 'Pods'
+        ➜ Explicit dependency on target 'FirebaseCoreInternal-FirebaseCoreInternal_Privacy' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities' in project 'Pods'
+    Target 'GoogleUtilities' in project 'Pods'
+        ➜ Explicit dependency on target 'GoogleUtilities-GoogleUtilities_Privacy' in project 'Pods'
+        ➜ Explicit dependency on target 'PromisesObjC' in project 'Pods'
+    Target 'PromisesObjC' in project 'Pods'
+        ➜ Explicit dependency on target 'PromisesObjC-FBLPromises_Privacy' in project 'Pods'
+    Target 'PromisesObjC-FBLPromises_Privacy' in project 'Pods' (no dependencies)
+    Target 'GoogleUtilities-GoogleUtilities_Privacy' in project 'Pods' (no dependencies)
+    Target 'FirebaseCoreInternal-FirebaseCoreInternal_Privacy' in project 'Pods' (no dependencies)
+    Target 'FirebaseCore-FirebaseCore_Privacy' in project 'Pods' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/wang.lun/Work/line-stickers-ios/UserStickers/UserStickers/Resources/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -x objective-c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -x objective-c++ -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -V
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk -x c++ -c /dev/null
+
+Build description signature: ace17b44463417c3eb2ad193e2920f99
+Build description path: /Users/wang.lun/Library/Developer/Xcode/DerivedData/UserStickers-bjpqwcrhbrjlmmgoukkubiwvgigd/Build/Intermediates.noindex/XCBuildData/ace17b44463417c3eb2ad193e2920f99.xcbuilddata
+warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Realm' from project 'Pods')
+warning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Realm' from project 'Pods')
+warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'FirebaseAnalytics' from project 'Pods')
+warning: Run script build phase '[CP-User] Build FusionAppShared' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'FusionAppShared' from project 'Pods')
+warning: Run script build phase '[CP] Copy dSYMs' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'FusionAppShared' from project 'Pods')
+warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'GoogleAppMeasurement' from project 'Pods')
+warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/AffineFeature.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/AgastFeatureDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/AKAZE.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Algorithm.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/AlignExposures.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/AlignMTB.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/all_indices.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/allocator.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Animation.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/ANN_MLP.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/any.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/ArrayUtil.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/ArucoDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/autotuned_index.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/BarcodeDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/BaseCascadeClassifier.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/BFMatcher.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Board.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Boost.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/BOWImgDescriptorExtractor.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/BOWKMeansTrainer.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/BOWTrainer.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/BRISK.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/ByteVector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Calib3d.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/calib3d/calib3d_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CalibrateCRF.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CalibrateDebevec.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CalibrateRobertson.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/videoio/cap_ios.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CascadeClassifier.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CharucoBoard.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CharucoDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CharucoParameters.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CirclesGridFinderParameters.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CLAHE.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/ClassificationModel.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/composite_index.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/config.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/videoio/legacy/constants_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/videoio/legacy/constants_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/videoio/legacy/constants_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/videoio/legacy/constants_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/videoio/legacy/constants_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Converters.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Core.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/core/core_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/core/cv_cpu_dispatch.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/core/cv_cpu_helper.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CvCamera2.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/cvconfig.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/core/cvdef.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CVObjcUtil.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/CvType.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/defines.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/DescriptorMatcher.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/DetectionModel.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/DetectorParameters.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Dictionary.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/DictValue.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/dist.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/DMatch.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Dnn.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Double2.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Double3.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/DoubleVector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/DTrees.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/dummy.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/dynamic_bitset.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/EM.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/FaceDetectorYN.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/FaceRecognizerSF.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/FastFeatureDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Feature2D.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Features2d.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/FlannBasedMatcher.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Float4.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Float6.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/FloatVector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/general.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/GeneralizedHough.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/GeneralizedHoughBallard.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/GeneralizedHoughGuil.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/GFTTDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/GraphicalCodeDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/GridBoard.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/ground_truth.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/heap.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/hierarchical_clustering_index.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/highgui/highgui_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/HOGDescriptor.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Image2BlobParams.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Imgcodecs.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgcodecs/imgcodecs_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Imgproc.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgproc/imgproc_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/index_testing.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Int4.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/IntelligentScissorsMB.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgproc/hal/interface.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgproc/hal/interface.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgproc/hal/interface.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgproc/hal/interface.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgproc/hal/interface.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/IntVector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgcodecs/ios.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/IStreamReader.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/KAZE.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/kdtree_index.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/kdtree_single_index.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/KeyPoint.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/KeypointsModel.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/kmeans_index.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/KNearest.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Layer.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/linear_index.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/LineSegmentDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/logger.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/LogisticRegression.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/lsh_index.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/lsh_table.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgcodecs/macosx.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Mat.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatConverters.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfByte.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfDMatch.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfDouble.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfFloat.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfFloat4.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfFloat6.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfInt.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfInt4.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfKeyPoint.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfPoint2f.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfPoint2i.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfPoint3.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfPoint3f.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfRect2d.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfRect2i.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatOfRotatedRect.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MatQuickLook.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/matrix.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MergeDebevec.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MergeExposures.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MergeMertens.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MergeRobertson.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MinMaxLocResult.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Ml.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Model.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Moments.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/core/hal/msa_macros.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/MSER.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Net.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/nn_index.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/NormalBayesClassifier.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Objdetect.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/object_factory.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/opencv2.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/opencv2-Swift.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/ORB.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/ParamGrid.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/params.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Photo.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Point2d.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Point2f.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Point2i.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Point3d.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Point3f.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Point3i.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/QRCodeDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/QRCodeDetectorAruco.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/QRCodeDetectorArucoParams.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/QRCodeEncoder.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/QRCodeEncoderParams.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/random.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Range.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Rect2d.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Rect2f.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Rect2i.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/RefineParameters.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/result_set.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/RotatedRect.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/RTrees.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/sampling.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/saving.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Scalar.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/SegmentationModel.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/SIFT.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/SimpleBlobDetector.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/SimpleBlobDetectorParams.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/simplex_downhill.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Size2d.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Size2f.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Size2i.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/StatModel.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/StereoBM.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/StereoMatcher.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/StereoSGBM.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Subdiv2D.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/SVM.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/SVMSGD.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TermCriteria.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TextDetectionModel.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TextDetectionModel_DB.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TextDetectionModel_EAST.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TextRecognitionModel.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TickMeter.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/flann/timer.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Tonemap.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TonemapDrago.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TonemapMantiuk.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TonemapReinhard.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/TrainData.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgproc/types_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgproc/types_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/imgproc/types_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/UsacParams.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/VideoCapture.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/Videoio.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/videoio/videoio_c.h (in target 'OpenCVWrapper' from project 'Pods')
+warning: Skipping duplicate build file in Copy Headers build phase: /Users/wang.lun/Work/line-stickers-ios/UserStickers/OpenCVWrapper/Source/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers/VideoWriter.h (in target 'OpenCVWrapper' from project 'Pods')
+/Users/wang.lun/Work/line-stickers-ios/UserStickers/UserStickers.xcodeproj: error: No profile for team 'T6Z7BW9A6J' matching 'LINE Sticker Maker Share Extension Dev' found: Xcode couldn't find any provisioning profiles matching 'T6Z7BW9A6J/LINE Sticker Maker Share Extension Dev'. Install the profile (by dragging and dropping it onto Xcode's dock item) or select a different one in the Signing & Capabilities tab of the target editor. (in target 'UserStickersShareExtension' from project 'UserStickers')
+/Users/wang.lun/Work/line-stickers-ios/UserStickers/UserStickers.xcodeproj: error: No profile for team 'T6Z7BW9A6J' matching 'LINE Sticker Maker Notification Service Dev' found: Xcode couldn't find any provisioning profiles matching 'T6Z7BW9A6J/LINE Sticker Maker Notification Service Dev'. Install the profile (by dragging and dropping it onto Xcode's dock item) or select a different one in the Signing & Capabilities tab of the target editor. (in target 'UserStickersNotificationService' from project 'UserStickers')
+warning: Run script build phase '[CP] Copy Pods Resources' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'UserStickersNotificationService' from project 'UserStickers')
+/Users/wang.lun/Work/line-stickers-ios/UserStickers/UserStickers.xcodeproj: error: No profile for team 'T6Z7BW9A6J' matching 'LINE Sticker Maker Dev' found: Xcode couldn't find any provisioning profiles matching 'T6Z7BW9A6J/LINE Sticker Maker Dev'. Install the profile (by dragging and dropping it onto Xcode's dock item) or select a different one in the Signing & Capabilities tab of the target editor. (in target 'UserStickers' from project 'UserStickers')
+warning: Run script build phase '[CP] Embed Pods Frameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'UserStickers' from project 'UserStickers')
+warning: Run script build phase '[CP] Copy Pods Resources' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'UserStickers' from project 'UserStickers')
+warning: Run script build phase 'Run SwiftLint' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'UserStickers' from project 'UserStickers')

@@ -1,0 +1,15 @@
+# SwiftFormat configuration file
+# For full list of options see: https://github.com/nicklockwood/SwiftFormat/blob/master/Documentation/Configuration.md
+
+--indent 4
+--linebreaks lf
+--maxwidth 120
+--wraparguments before-first
+--wrapcollections before-first
+
+# Enable specific rules (移除了 trailingCommas)
+--enable redundantSelf,trailingClosures,sortImports,emptyBraces,consecutiveSpaces
+--disable unusedArguments,trailingCommas
+
+# Exclude folders
+# --exclude Tests

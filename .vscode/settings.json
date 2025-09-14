@@ -1,0 +1,9 @@
+{
+    // 使用 SwiftFormat 作为 Swift 文件的格式化工具
+    "swift.formatTool": "swiftformat",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": null,
+    "[swift]": {
+        "editor.defaultFormatter": "vknabel.vscode-swiftformat"
+    }
+}
