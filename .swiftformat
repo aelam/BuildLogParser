@@ -7,6 +7,9 @@
 --wraparguments before-first
 --wrapcollections before-first
 
+# Conditional compilation directives indentation
+--ifdef no-indent
+
 # Enable specific rules (removed trailingCommas)
 --enable redundantSelf,trailingClosures,sortImports,emptyBraces,consecutiveSpaces
 --disable unusedArguments,trailingCommas

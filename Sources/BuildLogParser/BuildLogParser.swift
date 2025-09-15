@@ -13,10 +13,12 @@ public protocol DiagnosticInput {
     func readLines() throws -> AnySequence<String>
 }
 
+#if canImport(Darwin)
 @available(macOS 10.15, *)
 public protocol AsyncDiagnosticInput {
     func readLines() async throws -> AsyncThrowingStream<String, Error>
 }
+#endif
 
 // MARK: - Output Abstraction
 
@@ -121,6 +123,7 @@ public struct FileHandleInput: DiagnosticInput {
 }
 
 // Async version of FileHandle input
+#if canImport(Darwin)
 @available(macOS 10.15, *)
 public struct AsyncFileHandleInput: AsyncDiagnosticInput {
     private let fileHandle: FileHandle
@@ -183,6 +186,7 @@ public struct AsyncFileHandleInput: AsyncDiagnosticInput {
         }
     }
 }
+#endif
 
 // MARK: - Output Implementations
 
@@ -304,7 +308,8 @@ public class DiagnosticsParser {
         finish()
     }
 
-    // Async process input source
+    // Async process input source (Darwin only due to DispatchSource limitations)
+    #if canImport(Darwin)
     @available(macOS 10.15, *)
     public func parse(input: AsyncDiagnosticInput) async throws {
         let lineStream = try await input.readLines()
@@ -315,6 +320,7 @@ public class DiagnosticsParser {
 
         finish()
     }
+    #endif
 
     private func consumeLine(_ line: String) {
         // Check if it's an end condition

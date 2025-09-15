@@ -122,7 +122,7 @@ public class DiagnosticsParser {
     public init(rules: [DiagnosticRule])
     public func addOutput(_ output: DiagnosticOutput)
     public func parse(input: DiagnosticInput) throws
-    public func parse(input: AsyncDiagnosticInput) async throws // macOS 10.15+
+    public func parse(input: AsyncDiagnosticInput) async throws // macOS only, 10.15+
 }
 ```
 
