@@ -7,6 +7,8 @@ on:
     branches: [ main, develop ]
 
 jobs:
+  # Cross-platform testing (macOS and Linux)
+  # Windows support can be added when Swift toolchain is more stable
   test:
     name: Test on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -14,16 +16,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest]
+        os: [macos-latest, ubuntu-latest]
         swift-version: [ '6.1' ]
+        # Note: Windows support for Swift is experimental
+        # Can be added later when Windows Swift toolchain is more stable
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # macOS Swift setup
-    - name: Setup Swift (macOS)
-      if: runner.os == 'macOS'
+    # macOS and Linux Swift setup
+    - name: Setup Swift
       uses: swift-actions/setup-swift@v2
       with:
         swift-version: ${{ matrix.swift-version }}
@@ -43,9 +46,20 @@ jobs:
     - name: Build release
       run: swift build -c release --verbose
 
-  # Lint and format checking
+    # Test CLI functionality
+    - name: Test CLI help
+      run: |
+        ./.build/release/buildlog-parser --help
+        ./.build/release/buildlog-parser parse --help
+
+    # Test parsing functionality with sample data
+    - name: Test parsing functionality
+      run: |
+        echo "File.swift:10:5: error: cannot find 'unknownFunction' in scope" | ./.build/release/buildlog-parser parse - --format json
+
+  # Lint and format checking (macOS only - tools available)
   lint:
-    name: Code Quality
+    name: Code Quality & Formatting
     runs-on: macos-latest
     env:
       SWIFT_VERSION: '6.1'
