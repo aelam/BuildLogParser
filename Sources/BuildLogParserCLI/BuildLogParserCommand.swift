@@ -88,20 +88,13 @@ struct ParseCommand: AsyncParsableCommand {
             )
         }
 
-        // Create parser with all available rules
+        // Create parser with organized rule sets
         let rules: [DiagnosticRule] = [
-            // Primary compile error rule (handles most compilation errors)
-            CompileErrorRule(source: "xcodebuild", categoryPrefix: "xcode"),
-            // Additional Xcode build rules
-            SwiftCompileTaskFailedRule(),
-            XcodeBuildWarningRule(),
-            BuildCommandFailedRule(),
-            // Swift build rules
-            SwiftBuildCompileErrorRule(),
-            SwiftBuildModuleFailedRule(),
-            // General rules
-            LinkerErrorRule(),
-            XCTestRule()
+            CompileErrorRule(source: "compiler"),
+
+            // Composite rules without common rules to avoid conflicts
+            XcodeBuildRule(includeCommonRules: false), // Xcode build specific diagnostics
+            SwiftBuildRule(includeCommonRules: false), // Swift build specific diagnostics
         ]
 
         let parser = DiagnosticsParser(rules: rules)

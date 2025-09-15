@@ -23,11 +23,6 @@ swift test
 swift test --filter BuildLogParserTests
 ```
 
-### 跨平台验证
-```bash
-# 运行跨平台兼容性检查
-./scripts/verify-cross-platform.sh
-```
 
 ## 🔄 CI/CD 流水线
 
@@ -50,15 +45,9 @@ swift build              # 确保编译通过
 swift test               # 运行测试
 ```
 
-### 2. 提交前检查
-```bash
-./scripts/verify-cross-platform.sh    # 完整的跨平台验证
-```
 
 ### 3. 发布新版本
 ```bash
-# 1. 确保所有检查通过
-./scripts/verify-cross-platform.sh
 
 # 2. 创建并推送版本标签
 git tag v1.0.0

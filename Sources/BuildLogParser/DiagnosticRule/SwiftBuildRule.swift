@@ -7,13 +7,21 @@ import Foundation
 public struct SwiftBuildRule: DiagnosticRule {
     private let subRules: [DiagnosticRule]
 
-    public init() {
-        subRules = [
-            CompileErrorRule(source: "swift", categoryPrefix: "compile"),
-            // Generic compiler error rule with swift-build source
+    public init(includeCommonRules: Bool = true) {
+        var rules: [DiagnosticRule] = []
+
+        // 可选择性包含通用编译错误规则
+        if includeCommonRules {
+            rules.append(CompileErrorRule(source: "swift", categoryPrefix: "compile"))
+        }
+
+        rules += [
+            SwiftBuildCompileErrorRule(), // Swift build 特定的编译错误
             SwiftBuildModuleFailedRule(), // Swift Build module failure
             SwiftBuildProgressRule(), // Swift Build progress information
         ]
+
+        subRules = rules
     }
 
     public func fastFail(line: String) -> Bool {

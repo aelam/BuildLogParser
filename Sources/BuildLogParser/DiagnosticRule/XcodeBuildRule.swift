@@ -12,9 +12,15 @@ import Foundation
 public struct XcodeBuildRule: DiagnosticRule {
     private let subRules: [DiagnosticRule]
 
-    public init() {
-        subRules = [
-            CompileErrorRule(source: "xcodebuild"), // Generic compiler error rule with xcodebuild source
+    public init(includeCommonRules: Bool = true) {
+        var rules: [DiagnosticRule] = []
+
+        if includeCommonRules {
+            rules.append(CompileErrorRule(source: "xcodebuild"))
+        }
+
+        // xcodebuild rules
+        rules += [
             BuildFailedRule(),
             XcodeBuildWarningRule(),
             SwiftCompileTaskFailedRule(),
@@ -22,6 +28,8 @@ public struct XcodeBuildRule: DiagnosticRule {
             LinkerErrorRule(),
             XCTestRule(),
         ]
+
+        subRules = rules
     }
 
     public func fastFail(line: String) -> Bool {
@@ -46,9 +54,10 @@ public struct XcodeBuildRule: DiagnosticRule {
     }
 
     public func isEnd(line: String, current: Diagnostic?) -> Bool {
+        // Check if any sub-rule indicates this is an end
         for subRule in subRules where subRule.isEnd(line: line, current: current) {
             return true
         }
-        return true // Default end
+        return false // Let continuation continue unless explicitly ended
     }
 }

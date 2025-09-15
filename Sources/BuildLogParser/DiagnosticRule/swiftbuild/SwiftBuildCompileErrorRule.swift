@@ -109,8 +109,10 @@ public struct SwiftBuildCompileErrorRule: DiagnosticRule {
     }
 
     public func isEnd(line: String, current: Diagnostic?) -> Bool {
-        guard current?.source == "swift-build",
-              current?.category?.hasPrefix("compile_") == true else { return false }
+        guard
+            current?.source == "swift-build",
+            current?.category?.hasPrefix("compile_") == true
+        else { return false }
 
         // 如果是新的错误开始，结束当前诊断
         if startRegex.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)) != nil {
