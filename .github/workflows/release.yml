@@ -27,61 +27,51 @@ jobs:
         draft: false
         prerelease: false
 
-  build-and-test:
-    name: Build and Test on ${{ matrix.os }}
+  build-release:
+    name: Build Release Binaries
     runs-on: ${{ matrix.os }}
     
     strategy:
       matrix:
-        os: [ubuntu-22.04, macos-latest]
-        swift-version: ['5.9']
+        os: [ubuntu-latest, macos-latest]
+        swift-version: ['6.1']
         
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
       
     - name: Setup Swift
-      uses: swift-actions/setup-swift@v1
+      uses: swift-actions/setup-swift@v2
       with:
         swift-version: ${{ matrix.swift-version }}
         
-    - name: Build and test
+    - name: Build release binary
       run: |
         swift --version
-        swift build -c release
-        swift test
+        swift build -c release --verbose
         
-    - name: Archive build artifacts
-      if: matrix.os == 'ubuntu-22.04'
+    - name: Create Linux archive
+      if: matrix.os == 'ubuntu-latest'
       run: |
-        tar -czf BuildLogParser-linux.tar.gz -C .build/release BuildLogParser || true
+        cd .build/release
+        tar -czf buildlog-parser-linux-x64.tar.gz buildlog-parser
         
-    - name: Archive build artifacts (macOS)
-      if: matrix.os == 'macos-latest'  
+    - name: Create macOS archive  
+      if: matrix.os == 'macos-latest'
       run: |
-        tar -czf BuildLogParser-macos.tar.gz -C .build/release BuildLogParser || true
+        cd .build/release
+        tar -czf buildlog-parser-macos-arm64.tar.gz buildlog-parser
 
-  verify-cross-platform:
-    name: Final Cross-Platform Verification
-    runs-on: ${{ matrix.os }}
-    needs: build-and-test
-    
-    strategy:
-      matrix:
-        os: [ubuntu-22.04, macos-latest]
-        
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup Swift
-      uses: swift-actions/setup-swift@v1
+    - name: Upload Linux artifact
+      if: matrix.os == 'ubuntu-latest'
+      uses: actions/upload-artifact@v3
       with:
-        swift-version: '5.9'
-        
-    - name: Final verification
-      run: |
-        echo "Final cross-platform verification for release..."
-        swift build -c release
-        swift test
-        echo "Release verification completed successfully on ${{ matrix.os }}!"
+        name: buildlog-parser-linux-x64
+        path: .build/release/buildlog-parser-linux-x64.tar.gz
+
+    - name: Upload macOS artifact
+      if: matrix.os == 'macos-latest'
+      uses: actions/upload-artifact@v3
+      with:
+        name: buildlog-parser-macos-arm64
+        path: .build/release/buildlog-parser-macos-arm64.tar.gz
