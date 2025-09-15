@@ -320,7 +320,7 @@ Total Issues Found: 3
 
 ## Requirements
 
-- **Swift**: 6.1 or later
+- **Swift**: 5.9 or later
 - **Platforms**: macOS 10.15+, Linux
 - **Dependencies**: Swift ArgumentParser (for CLI only)
 

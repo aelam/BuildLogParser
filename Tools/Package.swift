@@ -1,9 +1,9 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
     name: "Tools",
-    platforms: [.macOS(.v10_11)],
+    platforms: [.macOS(.v10_13)],
     dependencies: [
         .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.57.2"),
     ],

@@ -7,74 +7,69 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  # Cross-platform testing (macOS and Linux)
-  # Windows support can be added when Swift toolchain is more stable
   test:
-    name: Test on ${{ matrix.os }}
+    name: Test (${{ matrix.os }}, Swift ${{ matrix.swift }})
     runs-on: ${{ matrix.os }}
-    
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-latest]
-        swift-version: [ '6.1' ]
-        # Note: Windows support for Swift is experimental
-        # Can be added later when Windows Swift toolchain is more stable
+        os: [ubuntu-latest, macos-latest]
+        swift: [ "5.9", "5.10", "6.1" ]
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    # macOS and Linux Swift setup
-    - name: Setup Swift
-      uses: swift-actions/setup-swift@v2
-      with:
-        swift-version: ${{ matrix.swift-version }}
-   
-    - name: Print Swift version
-      run: swift --version
+      # macOS: setup-swift
+      - name: Setup Swift (macOS)
+        if: matrix.os == 'macos-latest'
+        uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: ${{ matrix.swift }}
 
-    - name: Resolve package dependencies
-      run: swift package resolve
+      # Linux: use Docker container
+      - name: Setup Swift (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: echo "Using Swift ${{ matrix.swift }} from Docker image"
+        # 注意：容器方式要在 job 层定义，见下方 "container"
 
-    - name: Build
-      run: swift build --verbose
+      - name: Cache Swift build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .build
+            .swiftpm
+          key: ${{ runner.os }}-swift-${{ matrix.swift }}-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-swift-${{ matrix.swift }}-
 
-    - name: Run tests
-      run: swift test --verbose
+      - name: Print Swift version
+        run: swift --version
 
-    - name: Build release
-      run: swift build -c release --verbose
+      - name: Build & Test
+        run: |
+          swift build
+          swift test
 
-    # Test CLI functionality
-    - name: Test CLI help
-      run: |
-        ./.build/release/buildlog-parser --help
-        ./.build/release/buildlog-parser parse --help
+      - name: Build Release
+        run: swift build -c release
 
-    # Test parsing functionality with sample data
-    - name: Test parsing functionality
-      run: |
-        echo "File.swift:10:5: error: cannot find 'unknownFunction' in scope" | ./.build/release/buildlog-parser parse - --format json
+      - name: CLI Tests
+        run: |
+          ./.build/release/buildlog-parser --help
+          echo "File.swift:10:5: error: cannot find 'unknownFunction' in scope" \
+            | ./.build/release/buildlog-parser parse - --format json
 
-  # Lint and format checking (macOS only - tools available)
+    container:
+      image: ${{ matrix.os == 'ubuntu-latest' && format('swift:{0}', matrix.swift) || '' }}
+      # macOS 不支持 container，会忽略这个字段
+
   lint:
     name: Code Quality & Formatting
     runs-on: macos-latest
-    env:
-      SWIFT_VERSION: '6.1'
-    
+    needs: test
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup Swift
-      uses: swift-actions/setup-swift@v2
-      with:
-        swift-version: ${{ env.SWIFT_VERSION }}
-      env:
-        SWIFT_ACTIONS_SKIP_GPG: true
-
-    - name: Check Swift format
-      run: |
-        swift run -c release --package-path Tools swiftformat .
+      - uses: actions/checkout@v4
+      - uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: "5.10" # 只在最新版本跑 Lint
+      - run: swift run -c release --package-path Tools swiftformat .
