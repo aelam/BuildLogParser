@@ -21,7 +21,7 @@ Add BuildLogParser to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/aelam/BuildLogParser.git", from: "1.0.0")
+    .package(url: "https://github.com/aelam/BuildLogParser.git", from: "0.1.0")
 ]
 ```
 
@@ -72,9 +72,8 @@ import BuildLogParser
 
 // Create parser with rules
 let rules: [DiagnosticRule] = [
-    SwiftBuildCompileErrorRule(),
-    LinkerErrorRule(),
-    XCTestRule()
+    XcodeBuildRule(includeCommonRules: true),
+    // SwiftBuildRule(includeCommonRules: true) // Uncomment to include Swift build rules
 ]
 
 let parser = DiagnosticsParser(rules: rules)
@@ -321,7 +320,7 @@ Total Issues Found: 3
 
 ## Requirements
 
-- **Swift**: 5.9 or later
+- **Swift**: 6.1 or later
 - **Platforms**: macOS 10.15+, Linux
 - **Dependencies**: Swift ArgumentParser (for CLI only)
 
@@ -363,16 +362,6 @@ To add support for new types of build errors:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Changelog
-
-### Version 1.0.0
-- Initial release
-- Support for Swift build and Xcode build log parsing
-- Command line interface with multiple output formats
-- Swift Testing framework integration
-- Cross-platform support (macOS and Linux)
-- Performance optimizations with fast-fail checking
 
 ## Related Projects
 
