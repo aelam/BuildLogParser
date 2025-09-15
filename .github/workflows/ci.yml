@@ -7,66 +7,97 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  test:
-    name: Test (${{ matrix.os }}, Swift ${{ matrix.swift }})
-    runs-on: ${{ matrix.os }}
+  test-macos:
+    name: Test (macOS, Swift ${{ matrix.swift }})
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
         swift: [ "5.9", "5.10", "6.1" ]
-
+    
     steps:
       - uses: actions/checkout@v4
-
-      # macOS: setup-swift
-      - name: Setup Swift (macOS)
-        if: matrix.os == 'macos-latest'
+      
+      - name: Setup Swift
         uses: swift-actions/setup-swift@v2
         with:
           swift-version: ${{ matrix.swift }}
-
-      # Linux: use Docker container
-      - name: Setup Swift (Linux)
-        if: matrix.os == 'ubuntu-latest'
-        run: echo "Using Swift ${{ matrix.swift }} from Docker image"
-        # 注意：容器方式要在 job 层定义，见下方 "container"
-
+      
       - name: Cache Swift build
         uses: actions/cache@v4
         with:
           path: |
             .build
             .swiftpm
-          key: ${{ runner.os }}-swift-${{ matrix.swift }}-${{ hashFiles('**/Package.resolved') }}
+          key: macOS-swift-${{ matrix.swift }}-${{ hashFiles('Package.swift', 'Package.resolved') }}
           restore-keys: |
-            ${{ runner.os }}-swift-${{ matrix.swift }}-
-
+            macOS-swift-${{ matrix.swift }}-${{ hashFiles('Package.swift') }}
+            macOS-swift-${{ matrix.swift }}-
+            macOS-swift-
+      
       - name: Print Swift version
         run: swift --version
-
+      
       - name: Build & Test
         run: |
           swift build
           swift test
-
+      
       - name: Build Release
         run: swift build -c release
-
+      
       - name: CLI Tests
         run: |
           ./.build/release/buildlog-parser --help
           echo "File.swift:10:5: error: cannot find 'unknownFunction' in scope" \
             | ./.build/release/buildlog-parser parse - --format json
 
+  test-linux:
+    name: Test (Linux, Swift ${{ matrix.swift }})
+    runs-on: ubuntu-latest
     container:
-      image: ${{ matrix.os == 'ubuntu-latest' && format('swift:{0}', matrix.swift) || '' }}
-      # macOS 不支持 container，会忽略这个字段
+      image: swift:${{ matrix.swift }}
+    strategy:
+      fail-fast: false
+      matrix:
+        swift: [ "5.9", "5.10", "6.1" ]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Cache Swift build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .build
+            .swiftpm
+          key: Linux-swift-${{ matrix.swift }}-${{ hashFiles('Package.swift', 'Package.resolved') }}
+          restore-keys: |
+            Linux-swift-${{ matrix.swift }}-${{ hashFiles('Package.swift') }}
+            Linux-swift-${{ matrix.swift }}-
+            Linux-swift-
+      
+      - name: Print Swift version
+        run: swift --version
+      
+      - name: Build & Test
+        run: |
+          swift build
+          swift test
+      
+      - name: Build Release
+        run: swift build -c release
+      
+      - name: CLI Tests
+        run: |
+          ./.build/release/buildlog-parser --help
+          echo "File.swift:10:5: error: cannot find 'unknownFunction' in scope" \
+            | ./.build/release/buildlog-parser parse - --format json
 
   lint:
     name: Code Quality & Formatting
     runs-on: macos-latest
-    needs: test
+    needs: [test-macos, test-linux]
     steps:
       - uses: actions/checkout@v4
       - uses: swift-actions/setup-swift@v2
