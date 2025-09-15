@@ -118,10 +118,10 @@ class JSONOutput: DiagnosticOutput {
             diagnostics: diagnostics,
             metadata: DiagnosticMetadata(
                 totalCount: diagnostics.count,
-                errorCount: diagnostics.count(where: { $0.severity == .error }),
-                warningCount: diagnostics.count(where: { $0.severity == .warning }),
-                infoCount: diagnostics.count(where: { $0.severity == .info }),
-                noteCount: diagnostics.count(where: { $0.severity == .note }),
+                errorCount: diagnostics.filter { $0.severity == .error }.count,
+                warningCount: diagnostics.filter { $0.severity == .warning }.count,
+                infoCount: diagnostics.filter { $0.severity == .info }.count,
+                noteCount: diagnostics.filter { $0.severity == .note }.count,
                 timestamp: Date(),
                 verbose: verbose
             )
@@ -317,10 +317,10 @@ class SummaryOutput: DiagnosticOutput {
     }
 
     private func calculateCounts() -> DiagnosticCounts {
-        let errorCount = diagnostics.count(where: { $0.severity == .error })
-        let warningCount = diagnostics.count(where: { $0.severity == .warning })
-        let infoCount = diagnostics.count(where: { $0.severity == .info })
-        let noteCount = diagnostics.count(where: { $0.severity == .note })
+        let errorCount = diagnostics.filter { $0.severity == .error }.count
+        let warningCount = diagnostics.filter { $0.severity == .warning }.count
+        let infoCount = diagnostics.filter { $0.severity == .info }.count
+        let noteCount = diagnostics.filter { $0.severity == .note }.count
         return DiagnosticCounts(errors: errorCount, warnings: warningCount, info: infoCount, notes: noteCount)
     }
 
@@ -346,8 +346,8 @@ class SummaryOutput: DiagnosticOutput {
         let fileGroups = Dictionary(grouping: diagnostics) { $0.file ?? "Unknown" }
 
         for (file, fileDiagnostics) in fileGroups.sorted(by: { $0.key < $1.key }) {
-            let fileErrors = fileDiagnostics.count(where: { $0.severity == .error })
-            let fileWarnings = fileDiagnostics.count(where: { $0.severity == .warning })
+            let fileErrors = fileDiagnostics.filter { $0.severity == .error }.count
+            let fileWarnings = fileDiagnostics.filter { $0.severity == .warning }.count
 
             output += "\n📄 \(file):\n"
             if fileErrors > 0 {
@@ -375,10 +375,10 @@ class StatsCollector: DiagnosticOutput {
     }
 
     func printStats() {
-        let errorCount = diagnostics.count(where: { $0.severity == .error })
-        let warningCount = diagnostics.count(where: { $0.severity == .warning })
-        let infoCount = diagnostics.count(where: { $0.severity == .info })
-        let noteCount = diagnostics.count(where: { $0.severity == .note })
+        let errorCount = diagnostics.filter { $0.severity == .error }.count
+        let warningCount = diagnostics.filter { $0.severity == .warning }.count
+        let infoCount = diagnostics.filter { $0.severity == .info }.count
+        let noteCount = diagnostics.filter { $0.severity == .note }.count
 
         print("\n📈 Detailed Statistics:")
         print("═══════════════════════════════════════════════════════════════")

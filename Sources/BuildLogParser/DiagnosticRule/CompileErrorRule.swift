@@ -21,7 +21,7 @@ public struct CompileErrorRule: DiagnosticRule {
     private let startRegex: NSRegularExpression = {
         do {
             return try NSRegularExpression(
-                pattern: #"^(.*\.(swift|m|mm|c|cpp|h|hpp)):(\d+):(\d+): (error|warning): (.*)$"#,
+                pattern: #"^(.*\.(swift|m|mm|c|cpp|h|hpp)):(\d+):(\d+): (error|warning): (.*)$"#
             )
         } catch {
             fatalError("Invalid regex pattern: \(error)")
@@ -76,7 +76,7 @@ public struct CompileErrorRule: DiagnosticRule {
             source: source,
             category: category,
             raw: line,
-            buildTarget: nil,
+            buildTarget: nil
         )
     }
 

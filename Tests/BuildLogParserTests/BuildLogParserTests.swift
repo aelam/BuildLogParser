@@ -8,7 +8,7 @@ struct BuildLogParserTests {
         let rules: [DiagnosticRule] = [
             CompileErrorRule(),
             LinkerErrorRule(),
-            XCTestRule(),
+            XCTestRule()
         ]
 
         let parser = DiagnosticsParser(rules: rules)
@@ -17,7 +17,7 @@ struct BuildLogParserTests {
             "main.swift:10:5: error: use of unresolved identifier 'foo'",
             "Undefined symbols for architecture x86_64:",
             "  \"_foo\", referenced from:",
-            "clang: error: linker command failed",
+            "clang: error: linker command failed"
         ]
 
         let input = StringArrayInput(logLines)
@@ -67,7 +67,7 @@ struct BuildLogParserTests {
             "main.swift:15:3: warning: variable 'bar' was never used",
             "Undefined symbols for architecture x86_64:",
             "  \"_foo\", referenced from:",
-            "clang: error: linker command failed",
+            "clang: error: linker command failed"
         ]
 
         let input = StringArrayInput(logLines)
@@ -114,7 +114,7 @@ struct BuildLogParserTests {
             "main.swift:15:3: warning: variable 'bar' was never used",
             "Undefined symbols for architecture x86_64:",
             "  \"_foo\", referenced from:",
-            "clang: error: linker command failed",
+            "clang: error: linker command failed"
         ]
 
         let input = StringArrayInput(logLines)
@@ -145,7 +145,7 @@ struct BuildLogParserTests {
         let parser1 = DiagnosticsParser(rules: rules)
         let logLines = [
             "main.swift:10:5: error: use of unresolved identifier 'foo'",
-            "main.swift:15:3: warning: variable 'bar' was never used",
+            "main.swift:15:3: warning: variable 'bar' was never used"
         ]
         let input1 = StringArrayInput(logLines)
         let collectingOutput1 = CollectingOutput()
@@ -187,7 +187,7 @@ struct BuildLogParserTests {
         let rules: [DiagnosticRule] = [
             CompileErrorRule(),
             LinkerErrorRule(),
-            XCTestRule(),
+            XCTestRule()
         ]
 
         let parser = DiagnosticsParser(rules: rules)

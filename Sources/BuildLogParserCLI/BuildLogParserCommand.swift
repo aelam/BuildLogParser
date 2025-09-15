@@ -94,7 +94,7 @@ struct ParseCommand: AsyncParsableCommand {
 
             // Composite rules without common rules to avoid conflicts
             XcodeBuildRule(includeCommonRules: false), // Xcode build specific diagnostics
-            SwiftBuildRule(includeCommonRules: false), // Swift build specific diagnostics
+            SwiftBuildRule(includeCommonRules: false) // Swift build specific diagnostics
         ]
 
         let parser = DiagnosticsParser(rules: rules)

@@ -27,7 +27,7 @@ public struct LinkerErrorRule: DiagnosticRule {
             source: "linker",
             category: "undefined_symbols",
             raw: line,
-            buildTarget: nil,
+            buildTarget: nil
         )
     }
 

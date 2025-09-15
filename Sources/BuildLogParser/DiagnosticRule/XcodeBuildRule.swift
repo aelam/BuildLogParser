@@ -26,7 +26,7 @@ public struct XcodeBuildRule: DiagnosticRule {
             SwiftCompileTaskFailedRule(),
             BuildCommandFailedRule(),
             LinkerErrorRule(),
-            XCTestRule(),
+            XCTestRule()
         ]
 
         subRules = rules

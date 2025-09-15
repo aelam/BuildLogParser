@@ -18,7 +18,7 @@ public struct SwiftBuildRule: DiagnosticRule {
         rules += [
             SwiftBuildCompileErrorRule(), // Swift build 特定的编译错误
             SwiftBuildModuleFailedRule(), // Swift Build module failure
-            SwiftBuildProgressRule(), // Swift Build progress information
+            SwiftBuildProgressRule() // Swift Build progress information
         ]
 
         subRules = rules

@@ -10,9 +10,12 @@
 # Conditional compilation directives indentation
 --ifdef no-indent
 
-# Enable specific rules (removed trailingCommas)
+# Enable specific rules
 --enable redundantSelf,trailingClosures,sortImports,emptyBraces,consecutiveSpaces
---disable unusedArguments,trailingCommas
+--disable unusedArguments
+
+# Trailing comma configuration - remove unnecessary trailing commas
+--commas inline
 
 # Exclude folders
 # --exclude Tests

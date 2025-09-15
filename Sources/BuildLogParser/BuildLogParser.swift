@@ -196,7 +196,7 @@ public struct CallbackOutput: DiagnosticOutput {
 
     public init(
         onDiagnostic: @escaping (Diagnostic) -> Void,
-        onFinish: @escaping () -> Void = {},
+        onFinish: @escaping () -> Void = {}
     ) {
         self.onDiagnostic = onDiagnostic
         self.onFinish = onFinish
